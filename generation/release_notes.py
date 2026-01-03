@@ -55,7 +55,5 @@ class ReleaseNoteGenerator:
     {artifacts}
     """
 
-    def generate(self, artifacts: str, temperature: float, top_p: float, version_from: str, version_to: str, project_context: str) -> str:
-        prompt = self.build_prompt(artifacts, version_from, version_to, project_context)
-        print("PROMPT:" + prompt)
+    def generate(self, prompt: str, temperature: float, top_p: float) -> str:
         return self.llm.generate(prompt, temperature, top_p)

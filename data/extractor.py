@@ -70,13 +70,14 @@ class DataExtractor:
 
         return issue_numbers
 
-    def get_issues_by_numbers(
+    def get_issues(
             self,
             owner: str,
             repo: str,
-            issue_numbers: Set[int],
+            commits: List[str],
             token: Optional[str] = None
     ) -> List[str]:
+        issue_numbers = self.extract_issue_numbers(commits)
         headers = {"Accept": "application/vnd.github+json"}
         if token:
             headers["Authorization"] = f"Bearer {token}"
@@ -92,7 +93,6 @@ class DataExtractor:
 
             data = response.json()
 
-            # Skip pull requests
             if "pull_request" in data:
                 title = data["title"]
                 issues.append(f"[PULL REQUEST] {title}")
