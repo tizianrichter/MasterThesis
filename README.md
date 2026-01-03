@@ -8,9 +8,9 @@ The architecture separates data extraction, preprocessing, context integration, 
 
 Output sections are generated based on the input data and can include categories such as Added, Changed, Fixed, Removed, and Security.
 
-### Example
+## Example
 
-**Input:**
+### Input:
 
 [COMMITS] Add user management API
 
@@ -20,12 +20,12 @@ Output sections are generated based on the input data and can include categories
 
 [PULL_REQUESTS] Implement role-based access control
 
-**Generated Release Notes:**
+### Generated Release Notes:
 
-### Added
+**Added**
 - User management API.
 - Role-based access control.
 
-### Fixed
+**Fixed**
 - Memory leak in the authentication module.
 - Issue preventing users from resetting passwords.
