@@ -51,6 +51,10 @@ class ReleaseNoteGenerator:
     They may include commits, issues, and pull requests.
     Do NOT list them verbatim.
 
+    NOTE:
+    - Commit messages and pull requests may refer to the same change. Treat duplicates as a single change.
+    - If a change was reverted within this release, do NOT list it unless the revert itself is user-relevant.
+
     CHANGES:
     {artifacts}
     """
