@@ -1,0 +1,97 @@
+C:\Users\tizia\PycharmProjects\MasterThesis\venv\Scripts\python.exe C:\Users\tizia\PycharmProjects\MasterThesis\main.py
+OLLAMA_NUM_THREADS = 8
+PROMPT:
+    You are an expert software technical writer.
+
+    TASK:
+    Generate high-quality release notes for a software release.
+
+    GOALS:
+    - Summarize user-relevant changes
+    - Abstract away low-level implementation details
+    - Avoid redundancy
+    - Use clear, concise language
+
+    TARGET AUDIENCE:
+    End users with technical background.
+
+    GROUNDING RULES (IMPORTANT):
+    - Use ONLY the information explicitly provided in the input data.
+    - Do NOT invent, assume, or infer changes that are not present.
+    - If no information supports a section, OMIT the section entirely.
+
+    OUTPUT FORMAT:
+    - Use Markdown
+    - Include ONLY these sections if relevant:
+      - Added
+      - Changed
+      - Fixed
+      - Removed
+      - Security
+    - Do NOT include introductions, conclusions, titles, or version numbers
+    - Output ONLY the release notes content
+
+    PROJECT CONTEXT:
+    locally deployed AI model runner, designed to allow users to download and execute large language models (LLMs) directly on their personal computer
+
+    INPUT DATA:
+    The software version change is from **v0.13.4** to **v0.13.5**.
+    The following items describe changes between these two versions.
+    They may include commits, issues, and pull requests.
+    Do NOT list them verbatim.
+
+    NOTE:
+    - Commit messages and pull requests may refer to the same change. Treat duplicates as a single change.
+    - If a change was reverted within this release, do NOT list it unless the revert itself is user-relevant.
+
+    CHANGES:
+    [COMMIT] use ollama engine for bert models (#13501)
+[COMMIT] remove unnecessary code (#13502)
+[COMMIT] types: ConfigV2 and RootFS (#13504)
+[COMMIT] revert granite-embedding (#13505)
+[COMMIT] DeepseekV3 Family Parser (#13484)
+[COMMIT] types: add nested property support for tool definitions (#13508)
+[COMMIT] GGML update to ec98e2002 (#13451)
+[COMMIT] Omit args and params in tool function def and calls (#13516)
+[COMMIT] Revert "Omit args and params in tool function def and calls (#13516)" (#13518)
+[COMMIT] parsers/renderers: functiongemma (#13521)
+[PULL REQUEST] GGML update to ec98e2002
+[PULL REQUEST] DeepseekV3 Family Parser
+[PULL REQUEST] use ollama engine for bert models
+[PULL REQUEST] remove unnecessary code
+[PULL REQUEST] types: ConfigV2 and RootFS
+[PULL REQUEST] revert granite-embedding
+[PULL REQUEST] types: add nested property support for tools
+[PULL REQUEST] Omit args and params in ToolFunctions
+[PULL REQUEST] Revert "Omit args and params in ToolFunctions"
+[PULL REQUEST] parsers/renderers: functiongemma
+
+RELEASE NOTES:Release Notes for v0.13.5
+=========================
+
+This release of the locally deployed AI model runner includes several changes to improve performance and user experience. Here are the key updates:
+
+### Added
+
+* Support for the Ollama engine for BERT models (#13501)
+* DeepseekV3 Family Parser (#13484)
+* Types: add nested property support for tool definitions (#13508)
+
+### Changed
+
+* Reworked code to remove unnecessary elements (#13502)
+* Upgraded GGML to ec98e2002 (#13451)
+* Omitted args and params in tool function definitions and calls (#13516, reverted in #13518)
+* Improved parsers/renderers with the addition of functiongemma (#13521)
+
+### Fixed
+
+* Reverted granite-embedding (#13505)
+
+### Security
+
+* No security fixes were included in this release.
+
+Note: Commits and pull requests may refer to the same change, so duplicates are not listed. If a change was reverted within this release, it is only mentioned if it is user-relevant.
+
+Process finished with exit code 0
