@@ -4,6 +4,7 @@ from typing import List, Dict, Optional
 import re
 from typing import Set, List, Dict
 
+
 class DataExtractor:
 
     def get_commits_between(
@@ -101,3 +102,53 @@ class DataExtractor:
                 issues.append(f"[ISSUE] {title}")
 
         return issues
+
+    def get_code_diff_between(
+            self,
+            owner: str,
+            repo: str,
+            base: str,
+            head: str,
+            token: Optional[str] = None,
+            max_chars: int = 12000
+    ) -> str:
+        """
+        Get unified diff between two GitHub refs using the compare API.
+
+        :param owner: GitHub organization or username
+        :param repo: Repository name
+        :param base: Base tag/version/branch
+        :param head: Head tag/version/branch
+        :param token: Optional GitHub personal access token
+        :param max_chars: Safety limit to avoid huge prompts
+        :return: Unified diff string
+        """
+
+        url = f"https://api.github.com/repos/{owner}/{repo}/compare/{base}...{head}"
+
+        headers = {
+            "Accept": "application/vnd.github+json"
+        }
+        if token:
+            headers["Authorization"] = f"Bearer {token}"
+
+        response = requests.get(url, headers=headers)
+        response.raise_for_status()
+        data = response.json()
+
+        diff_chunks = []
+
+        for file in data.get("files", []):
+            patch = file.get("patch")
+            if not patch:
+                continue
+
+            filename = file.get("filename")
+            diff_chunks.append(f"--- a/{filename}\n+++ b/{filename}\n{patch}")
+
+        diff_text = "\n\n".join(diff_chunks)
+
+        if len(diff_text) > max_chars:
+            diff_text = diff_text[:max_chars] + "\n\n[DIFF TRUNCATED]"
+
+        return diff_text

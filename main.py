@@ -16,21 +16,23 @@ def main():
     )
     args = parser.parse_args()
 
-    llm_models = ["smollm2:135m", "llama2:7b"]
+    llm_models = ["smollm2:135m", "llama2:7b", "qwen2.5:7b-instruct"]
     v_source = "v0.13.4"
     v_target = "v0.13.5"
     project_context = "locally deployed AI model runner, designed to allow users to download and execute large language models (LLMs) directly on their personal computer"
+    repo_owner = "ollama"
+    repo_name = "ollama"
 
     extractor = DataExtractor()
     preprocessor = Preprocessor()
     retriever = Retriever()
-    llm = LocalLLM(model_name=llm_models[1])
+    llm = LocalLLM(model_name=llm_models[2])
     generator = ReleaseNoteGenerator(llm)
     formatter = Formatter()
 
     token = "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"
 
-    commits = extractor.get_commits_between("ollama", "ollama", v_source, v_target, token=token)
+    commits = extractor.get_commits_between(repo_owner, repo_name, v_source, v_target, token=token)
     issues = extractor.get_issues(
         "ollama",
         "ollama",
@@ -40,8 +42,15 @@ def main():
     # processed = preprocessor.process(raw_data)
     # enriched = retriever.enrich(issues)
     commits.extend(issues)
-    extracted_data = "\n".join(commits)
-    prompt = generator.build_prompt(extracted_data, v_source, v_target, project_context)
+    code_diff = extractor.get_code_diff_between(
+        repo_owner,
+        repo_name,
+        v_source,
+        v_target,
+        token=token
+    )
+    artifacts = "\n".join(commits)
+    prompt = generator.build_prompt(artifacts, v_source, v_target, project_context)
     print("PROMPT:" + prompt)
     if args.prompt_only:
         return
