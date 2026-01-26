@@ -7,6 +7,7 @@ from postprocess.formatter import Formatter
 import argparse
 import os
 from dotenv import load_dotenv
+from evaluation.evaluator import ReleaseEvaluator
 
 
 def parse_args():
@@ -51,6 +52,7 @@ def main():
     llm = LocalLLM(model_name=current_llm_model)
     generator = ReleaseNoteGenerator(llm)
     formatter = Formatter()
+    evaluator = ReleaseEvaluator()
 
     # Github Token
     load_dotenv()
@@ -60,10 +62,12 @@ def main():
     commits = extractor.get_commits_between(repo_owner, repo_name, v_source, v_target, token=token)
     issues = extractor.get_issues(repo_owner, repo_name, commits, token=token)
     commits.extend(issues)
-    code_diff = extractor.get_code_diff_between(repo_owner, repo_name, v_source, v_target, token=token)
+    # code_diff = extractor.get_code_diff_between(repo_owner, repo_name, v_source, v_target, token=token)
 
     # Generate prompt and release notes
+    ground_truth_changes = commits + issues
     artifacts = "\n".join(commits)
+    cleaned = preprocessor.process(artifacts)
     prompt = generator.build_prompt(artifacts, v_source, v_target, project_context)
     print("PROMPT:\n" + prompt)
 
@@ -73,6 +77,20 @@ def main():
     release_notes = generator.generate(prompt, temperature=0.1, top_p=0.9)
     final_output = formatter.format(release_notes)
     print("\nRELEASE NOTES:\n" + final_output)
+
+    # ReleaseEval evaluation
+    claims = evaluator.extract_claims(final_output)
+    coverage = evaluator.coverage(ground_truth_changes, claims)
+    hallucination = evaluator.hallucination_rate(ground_truth_changes, claims)
+
+    print("\nEVALUATION:")
+    print("\nCOVERAGE:")
+    for k, v in coverage.items():
+        print(f"{k}: {v:.2f}")
+
+    print("\nHALLUCINATION RATE:")
+    for k, v in hallucination.items():
+        print(f"{k}: {v:.2f}")
 
 
 if __name__ == "__main__":
