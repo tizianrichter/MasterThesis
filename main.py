@@ -8,7 +8,7 @@ import argparse
 import os
 from dotenv import load_dotenv
 from evaluation.evaluator import ReleaseEvaluator
-
+from utils.logging import redirect_output_per_run
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Generate release notes for a repo")
@@ -40,6 +40,16 @@ def main():
     )
     repo_owner = "ollama"
     repo_name = "ollama"
+
+    # Logging
+    log_path = redirect_output_per_run(
+        repo_owner=repo_owner,
+        repo_name=repo_name,
+        model_name=current_llm_model,
+        v_source=v_source,
+        v_target=v_target,
+    )
+    print(f"Logging to: {log_path}\n")
 
     # Print variables
     all_vars = {**locals(), "OLLAMA_NUM_THREADS": os.getenv("OLLAMA_NUM_THREADS")}
