@@ -1,0 +1,299 @@
+Logging to: logs\psf\requests\qwen2.5_7b-instruct\v2.31.0_to_v2.32.0_20260126_160348.txt
+
+
+================================================================================
+Running pipeline for psf/requests v2.31.0 → v2.32.0
+================================================================================
+
+repo_owner                = psf
+repo_name                 = requests
+v_source                  = v2.31.0
+v_target                  = v2.32.0
+project_context           = HTTP library for Python, focused on simplicity and readability
+current_llm_model         = qwen2.5:7b-instruct
+OLLAMA_NUM_THREADS        = 8
+
+PROMPT:
+
+    You are an expert software technical writer.
+
+    TASK:
+    Generate high-quality release notes for a software release.
+
+    GOALS:
+    - Summarize user-relevant changes
+    - Abstract away low-level implementation details
+    - Avoid redundancy
+    - Use clear, concise language
+
+    TARGET AUDIENCE:
+    End users with technical background.
+
+    GROUNDING RULES (IMPORTANT):
+    - Use ONLY the information explicitly provided in the input data.
+    - Do NOT invent, assume, or infer changes that are not present.
+    - If no information supports a section, OMIT the section entirely.
+
+    OUTPUT FORMAT:
+    - Use Markdown
+    - Include ONLY these sections if relevant:
+      - Added
+      - Changed
+      - Fixed
+      - Removed
+      - Security
+    - Do NOT include introductions, conclusions, titles, or version numbers
+    - Output ONLY the release notes content
+
+    PROJECT CONTEXT:
+    HTTP library for Python, focused on simplicity and readability
+
+    INPUT DATA:
+    The software version change is from **v2.31.0** to **v2.32.0**.
+    The following items describe changes between these two versions.
+    They may include commits, issues, and pull requests.
+    Do NOT list them verbatim.
+
+    NOTE:
+    - Commit messages and pull requests may refer to the same change. Treat duplicates as a single change.
+    - If a change was reverted within this release, do NOT list it unless the revert itself is user-relevant.
+
+    CHANGES:
+    [COMMIT] change to SPDX conform license string
+[COMMIT] Fix linting issues
+[COMMIT] Fix doc typo (#6467)
+[COMMIT] Add an Example for automatic retries to the Advanced Usage docs (#6258)
+[COMMIT] add docstring parameter `hooks` (#6456)
+[COMMIT] Update reference to "cookielib" to "cookiejar" in documentation (#6214)
+[COMMIT] refactor: prefer dictionary comphrension to loop (#6187)
+[COMMIT] Add note about adapter prefix match to docs (#6465)
+[COMMIT] Specify that Session.headers needs to be set to a OrderedDict in Header Ordering docs (#6475)
+[COMMIT] Merge branch 'main' into spdx-conform-license
+[COMMIT] Merge pull request #6266 from elprimato/spdx-conform-license
+[COMMIT] Pin GHA workflows and add dependabot to keep them up to date (#6497)
+[COMMIT] Pre commit update (#6498)
+[COMMIT] Bump dessant/lock-threads from 3.0.0 to 4.0.1
+[COMMIT] Bump actions/setup-python from 2.3.4 to 4.7.0
+[COMMIT] Bump github/codeql-action from 1.1.39 to 2.21.3
+[COMMIT] Merge pull request #6499 from psf/dependabot/github_actions/dessant/lock-threads-4.0.1
+[COMMIT] Merge pull request #6500 from psf/dependabot/github_actions/actions/setup-python-4.7.0
+[COMMIT] Bump actions/checkout from 2.7.0 to 3.5.3
+[COMMIT] Merge pull request #6502 from psf/dependabot/github_actions/github/codeql-action-2.21.3
+[COMMIT] Merge pull request #6501 from psf/dependabot/github_actions/actions/checkout-3.5.3
+[COMMIT] Upgrade to httpbin 0.10.0 (#6496)
+[COMMIT] Add 3.12 classifier and tox configuration (#6503)
+[COMMIT] Move to src directory (#6506)
+[COMMIT] Remove pytest-mock requirement (#6505)
+[COMMIT] fix monthly download badge (#6507)
+[COMMIT] Fix documentation monthly download badge (#6508)
+[COMMIT] Bump actions/checkout from 3.5.3 to 3.6.0
+[COMMIT] Merge pull request #6516 from psf/dependabot/github_actions/actions/checkout-3.6.0
+[COMMIT] remove pytest.ini since it does not exist anymore
+[COMMIT] Merge pull request #6517 from jnhyperion/remove-pytest-ini
+[COMMIT] Bump actions/checkout from 3.6.0 to 4.0.0
+[COMMIT] Merge pull request #6519 from psf/dependabot/github_actions/actions/checkout-4.0.0
+[COMMIT] Autoclose specific issue templates
+[COMMIT] Bump actions/checkout from 4.0.0 to 4.1.0
+[COMMIT] Merge pull request #6538 from psf/dependabot/github_actions/actions/checkout-4.1.0
+[COMMIT] Fix urllib3 pin in setup.cfg (#6545)
+[COMMIT] Bump github/codeql-action from 2.21.3 to 2.22.1
+[COMMIT] Merge pull request #6548 from psf/dependabot/github_actions/github/codeql-action-2.22.1
+[COMMIT] Update close comment
+[COMMIT] Update close-issues.yml
+[COMMIT] Merge pull request #6527 from sigmavirus24/update-templates
+[COMMIT] added assert statements into tests/test_requests/test_header_validation in regards to the issue #6551
+[COMMIT] Merge pull request #6552 from swims-hjkl/issue/test_header_validation
+[COMMIT] every chardet package maps to requests.packages.chardet.* package respectively
+[COMMIT] added handling for chardet and charset_normalizer imports
+[COMMIT] Update src/requests/packages.py
+[COMMIT] checkstyle
+[COMMIT] Fix missing space in error message
+[COMMIT] Merge pull request #6574 from msea1/matthew/fix_space
+[COMMIT] Bump dessant/lock-threads from 4.0.1 to 5.0.0
+[COMMIT] Merge pull request #6580 from psf/dependabot/github_actions/dessant/lock-threads-5.0.0
+[COMMIT] fix docstring typo: a -> as
+[COMMIT] Merge pull request #6581 from EFord36/typo-fix
+[COMMIT] Unit test for string containing multi-byte UTF-8
+[COMMIT] Too early definition added to 425 status code type
+[COMMIT] Added tests for status code 425 definitions.
+[COMMIT] Fixes to test
+[COMMIT] Enhance `super_len` to count encoded bytes for str
+[COMMIT] Update close-issues.yml
+[COMMIT] Merge pull request #6596 from psf/fix-autoclose-automtaion
+[COMMIT] Bump actions/setup-python from 4.7.0 to 5.0.0
+[COMMIT] Merge pull request #6599 from psf/dependabot/github_actions/actions/setup-python-5.0.0
+[COMMIT] Add note on connection timeout being larger than specified. Fix #5773
+[COMMIT] Add now mandatory readthedocs config file
+[COMMIT] Merge pull request #6603 from nsoranzo/rtd_config
+[COMMIT] Update docs/user/advanced.rst
+[COMMIT] Update docs/user/advanced.rst
+[COMMIT] Merge pull request #6600 from MestreLion/MestreLion-connection-timeout-note
+[COMMIT] Merge pull request #6592 from atatuzuner61/bug/6584
+[COMMIT] fix for ##6604
+[COMMIT] Bump github/codeql-action from 2.22.1 to 3.22.11
+[COMMIT] Merge pull request #6607 from psf/dependabot/github_actions/github/codeql-action-3.22.11
+[COMMIT] Merge pull request #6605 from jaikishpai/fix-#6604
+[COMMIT] docs: specify sphinx dirhtml builder
+[COMMIT] docs: add label to socks heading
+[COMMIT] Merge pull request #6613 from miketheman/add-socks-label
+[COMMIT] Revert "Merge pull request #6605 from jaikishpai/fix-#6604"
+[COMMIT] docs: replace concrete URLs with references
+[COMMIT] add myself
+[COMMIT] Merge pull request #6612 from miketheman/fix-docs-urls
+[COMMIT] Bump github/codeql-action from 3.22.11 to 3.23.0
+[COMMIT] Merge pull request #6619 from psf/dependabot/github_actions/github/codeql-action-3.23.0
+[COMMIT] Fix #6628 - JSONDecodeError are not deserializable
+[COMMIT] Bump github/codeql-action from 3.23.0 to 3.24.0
+[COMMIT] Merge pull request #6632 from psf/dependabot/github_actions/github/codeql-action-3.24.0
+[COMMIT] Cleanup defunct links from community docs page
+[COMMIT] Merge pull request #6640 from nateprewitt/community_docs_cleanup
+[COMMIT] Fix httpbin pin for test suite
+[COMMIT] Update supported copies of PyPy
+[COMMIT] Update Sphinx to work with latest readthedocs requirements
+[COMMIT] Merge pull request #6641 from nateprewitt/fix_ci
+[COMMIT] Drop support for CPython 3.7
+[COMMIT] Merge pull request #6642 from nateprewitt/drop_python_37
+[COMMIT] Merge pull request #6629 from Tarty/fix-6628-jsondecode-error-not-deserializable
+[COMMIT] Trim excess leading path separators
+[COMMIT] Merge pull request #6644 from sigmavirus24/bug/6643
+[COMMIT] Merge pull request #6589 from bruceadams/super_len_str_utf-8
+[COMMIT] update broken github pagination link
+[COMMIT] update authors github link
+[COMMIT] update urllib3 docs link
+[COMMIT] remove section with broken link to survey
+[COMMIT] Make example URL format a literal rather than an actual link
+[COMMIT] update broken rfc link
+[COMMIT] Merge pull request #6583 from EFord36/fix-broken-links
+[COMMIT] Merge pull request #6562 from amkarn258/issue-6223
+[COMMIT] Use TLS settings in selecting connection pool
+[COMMIT] Merge pull request #6655 from sigmavirus24/fix-tls-floppy
+[COMMIT] Add local TLS server
+[COMMIT] Merge pull request #6662 from sigmavirus24/fix-tls-floppy
+[COMMIT] Fix the proxy_bypass_registry function all returning true in some cases.
+[COMMIT] Additional should_bypass_proxies function test cases
+[COMMIT] Merge pull request #6302 from flysee/main
+[COMMIT] Bump actions/setup-python from 5.0.0 to 5.1.0
+[COMMIT] Merge pull request #6677 from psf/dependabot/github_actions/actions/setup-python-5.1.0
+[COMMIT] Add rfc9110 HTTP status code names
+[COMMIT] Merge pull request #6680 from mbeijen/rfc9110
+[COMMIT] Fix compatibility with pytest 8
+[COMMIT] Merge pull request #6682 from frenzymadness/pytest8
+[COMMIT] Bump github/codeql-action from 3.24.0 to 3.25.0
+[COMMIT] Merge pull request #6687 from psf/dependabot/github_actions/github/codeql-action-3.25.0
+[COMMIT] Pin 3.8 and 3.9 runners back to macos-13 (#6688)
+[COMMIT] Use an invalid URI that will not cause httpbin to throw 500
+[COMMIT] Merge pull request #6700 from franekmagiera/update-redirect-to-invalid-uri-test
+[COMMIT] Allow character detection dependencies to be optional in post-packaging steps
+[COMMIT] Merge pull request #6702 from nateprewitt/no_char_detection
+[COMMIT] Avoid reloading root certificates to improve concurrent performance (#6667)
+[COMMIT] v2.32.0
+[ISSUE] Connection timeout (not Read, Wall or Total) is consistently taking twice as long
+[PULL REQUEST] refactor: prefer dictionary comphrension to loop
+[PULL REQUEST] Update reference to "cookielib" to "cookiejar" in documentation
+[PULL REQUEST] Add an Example for automatic retries to the Advanced Usage docs
+[PULL REQUEST] Change to SPDX conform license string
+[PULL REQUEST] Fix the proxy_bypass_registry function all returning true in some cases.
+[PULL REQUEST] add docstring parameter hooks
+[PULL REQUEST] Add note about adapter prefix match to docs
+[PULL REQUEST] Fix doc typo
+[PULL REQUEST] Specify that Session.headers needs to be set to a OrderedDict in Header Ordering docs
+[PULL REQUEST] Upgrade to httpbin 0.10.0
+[PULL REQUEST] Pin GHA workflows and add dependabot
+[PULL REQUEST] Pre commit update
+[PULL REQUEST] Bump dessant/lock-threads from 3.0.0 to 4.0.1
+[PULL REQUEST] Bump actions/setup-python from 2.3.4 to 4.7.0
+[PULL REQUEST] Bump actions/checkout from 2.7.0 to 3.5.3
+[PULL REQUEST] Bump github/codeql-action from 1.1.39 to 2.21.3
+[PULL REQUEST] Add 3.12 classifier and tox configuration
+[PULL REQUEST] Remove pytest-mock requirement
+[PULL REQUEST] Move to src directory
+[PULL REQUEST] Fix monthly download badge in README
+[PULL REQUEST] Fix documentation monthly download badge
+[PULL REQUEST] Bump actions/checkout from 3.5.3 to 3.6.0
+[PULL REQUEST] Remove pytest.ini in MANIFEST.in since it does not exist anymore
+[PULL REQUEST] Bump actions/checkout from 3.6.0 to 4.0.0
+[PULL REQUEST] Autoclose specific issue templates
+[PULL REQUEST] Bump actions/checkout from 4.0.0 to 4.1.0
+[PULL REQUEST] Fix urllib3 pin in setup.cfg
+[PULL REQUEST] Bump github/codeql-action from 2.21.3 to 2.22.1
+[ISSUE] Missing assert in test_requests.py test_header_validation
+[PULL REQUEST] #6551  - assert statements for test test_header_validation
+[PULL REQUEST] every chardet package maps to requests.packages.chardet.* package respectively
+[PULL REQUEST] Fix missing space in error message
+[PULL REQUEST] Bump dessant/lock-threads from 4.0.1 to 5.0.0
+[PULL REQUEST] fix docstring typo: a -> as
+[PULL REQUEST] Fix broken links in docs
+[PULL REQUEST] Enhance `super_len` to count encoded bytes for str
+[PULL REQUEST] "TOO_EARLY" type definition for status code 425
+[PULL REQUEST] Update close-issues.yml
+[PULL REQUEST] Bump actions/setup-python from 4.7.0 to 5.0.0
+[PULL REQUEST] Add note on connection timeout being larger than specified. Fix #5773
+[PULL REQUEST] Add now mandatory readthedocs config file
+[ISSUE] Links at docs site return 404
+[PULL REQUEST] fix for ##6604
+[PULL REQUEST] Bump github/codeql-action from 2.22.1 to 3.22.11
+[PULL REQUEST] docs: specify sphinx dirhtml builder, use references instead of absolutes
+[PULL REQUEST] docs: add label to socks heading
+[PULL REQUEST] Bump github/codeql-action from 3.22.11 to 3.23.0
+[ISSUE] [BUG] JSONDecodeError can't be deserialized - invalid JSON raises a BrokenProcessPool and crashes the entire process pool
+[PULL REQUEST] Fix #6628 - JSONDecodeError are not deserializable
+[PULL REQUEST] Bump github/codeql-action from 3.23.0 to 3.24.0
+[PULL REQUEST] Cleanup defunct links from community docs page
+[PULL REQUEST] Fix CI
+[PULL REQUEST] Drop support for CPython 3.7
+[PULL REQUEST] Trim excess leading path separators
+[PULL REQUEST] Use TLS settings in selecting connection pool
+[PULL REQUEST] Add local TLS server
+[PULL REQUEST] Avoid reloading root certificates to improve concurrent performance
+[PULL REQUEST] Bump actions/setup-python from 5.0.0 to 5.1.0
+[PULL REQUEST] Add rfc9110 HTTP status code names
+[PULL REQUEST] Fix compatibility with pytest 8
+[PULL REQUEST] Bump github/codeql-action from 3.24.0 to 3.25.0
+[PULL REQUEST] Pin 3.8 and 3.9 runners back to macos-13
+[PULL REQUEST] Use an invalid URI that will not cause httpbin to throw 500
+[PULL REQUEST] Allow optional char detection dependencies in post-packaging
+    
+
+RELEASE NOTES:
+- **Added**
+  - Added note about adapter prefix match to documentation.
+  - Added example for automatic retries to the Advanced Usage docs.
+  - Added rfc9110 HTTP status code names.
+
+- **Changed**
+  - Changed license string to be SPDX conform.
+  - Updated references from "cookielib" to "cookiejar" in documentation.
+  - Updated setup.cfg to pin urllib3 version.
+  - Updated actions/checkout and actions/setup-python versions.
+  - Updated GitHub Actions workflows and added Dependabot.
+  - Updated GitHub CodeQL Action versions.
+  - Updated Sphinx to work with latest ReadTheDocs requirements.
+  - Changed pytest-mock requirement status in tox configuration.
+  - Moved project files to the `src` directory.
+  - Specified sphinx dirhtml builder and used references instead of absolutes in documentation.
+  - Added a note on connection timeout being larger than specified.
+  - Enhanced `super_len` function to count encoded bytes for strings.
+  - Fixed broken links in documentation.
+
+- **Fixed**
+  - Fixed JSONDecodeError deserialization issue.
+  - Fixed proxy_bypass_registry function returning true in all cases.
+  - Fixed the invalid URI test case.
+  - Trimmed excess leading path separators.
+  - Improved concurrent performance by avoiding root certificate reloading.
+  - Fixed compatibility with pytest 8.
+
+- **Dropped**
+  - Dropped support for CPython 3.7.
+
+EVALUATION:
+
+COVERAGE:
+bleu4: 0.86
+rougeL: 0.97
+meteor: 0.95
+
+HALLUCINATION RATE:
+bleu4: 0.15
+rougeL: 0.00
+meteor: 0.15
