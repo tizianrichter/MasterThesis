@@ -9,29 +9,7 @@ import os
 from dotenv import load_dotenv
 from evaluation.evaluator import ReleaseEvaluator
 from utils.logging import redirect_output_per_run
-import yaml
 import utils.helper as helper
-
-RUNS = [
-    {
-        "repo_owner": "ollama",
-        "repo_name": "ollama",
-        "v_source": "v0.13.4",
-        "v_target": "v0.13.5",
-        "project_context": (
-            "locally deployed AI model runner, designed to allow users to "
-            "download and execute large language models (LLMs) directly on their personal computer"
-        ),
-    },
-    {
-        "repo_owner": "psf",
-        "repo_name": "requests",
-        "v_source": "v2.31.0",
-        "v_target": "v2.32.0",
-        "project_context": "HTTP library for Python, focused on simplicity and readability",
-    },
-]
-
 
 def run_pipeline(
         repo_owner,
@@ -131,13 +109,14 @@ def main():
     all_llm_models = ["smollm2:135m", "llama2:7b", "qwen2.5:7b-instruct"]
     current_llm_model = all_llm_models[2]
 
-    for run in RUNS:
+    repos = helper.load_runs()
+    for repo in repos:
         run_pipeline(
-            repo_owner=run["repo_owner"],
-            repo_name=run["repo_name"],
-            v_source=run["v_source"],
-            v_target=run["v_target"],
-            project_context=run["project_context"],
+            repo_owner=repo["repo_owner"],
+            repo_name=repo["repo_name"],
+            v_source=repo["v_source"],
+            v_target=repo["v_target"],
+            project_context=repo["project_context"],
             current_llm_model=current_llm_model,
             prompt_only=args.prompt_only,
         )

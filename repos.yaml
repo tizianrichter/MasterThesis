@@ -1,0 +1,15 @@
+repos:
+  - repo_owner: ollama
+    repo_name: ollama
+    v_source: v0.13.4
+    v_target: v0.13.5
+    project_context: >
+      locally deployed AI model runner, designed to allow users to
+      download and execute large language models (LLMs) directly on their personal computer
+
+  - repo_owner: psf
+    repo_name: requests
+    v_source: v2.31.0
+    v_target: v2.32.0
+    project_context: >
+      HTTP library for Python, focused on simplicity and readability
