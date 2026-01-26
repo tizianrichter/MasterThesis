@@ -9,6 +9,8 @@ import os
 from dotenv import load_dotenv
 from evaluation.evaluator import ReleaseEvaluator
 from utils.logging import redirect_output_per_run
+import yaml
+import utils.helper as helper
 
 RUNS = [
     {
@@ -31,30 +33,14 @@ RUNS = [
 ]
 
 
-def parse_args():
-    parser = argparse.ArgumentParser(description="Generate release notes for a repo")
-    parser.add_argument(
-        "--prompt_only",
-        action="store_true",
-        help="If set, only generate the prompt without feeding into LLM"
-    )
-    return parser.parse_args()
-
-
-def print_variables(vars_dict):
-    for name, value in vars_dict.items():
-        print(f"{name:<25} = {value}")
-    print()
-
-
 def run_pipeline(
-    repo_owner,
-    repo_name,
-    v_source,
-    v_target,
-    project_context,
-    current_llm_model,
-    prompt_only=False,
+        repo_owner,
+        repo_name,
+        v_source,
+        v_target,
+        project_context,
+        current_llm_model,
+        prompt_only=False,
 ):
     # Logging
     log_path = redirect_output_per_run(
@@ -84,7 +70,7 @@ def run_pipeline(
         "current_llm_model": current_llm_model,
         "OLLAMA_NUM_THREADS": os.getenv("OLLAMA_NUM_THREADS"),
     }
-    print_variables(all_vars)
+    helper.print_variables(all_vars)
 
     # Initialize components
     extractor = DataExtractor()
@@ -138,8 +124,9 @@ def run_pipeline(
     for k, v in hallucination.items():
         print(f"{k}: {v:.2f}")
 
+
 def main():
-    args = parse_args()
+    args = helper.parse_args()
 
     all_llm_models = ["smollm2:135m", "llama2:7b", "qwen2.5:7b-instruct"]
     current_llm_model = all_llm_models[2]
