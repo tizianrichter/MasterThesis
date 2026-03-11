@@ -1,0 +1,422 @@
+Logging to: logs\open-telemetry\opentelemetry-java-instrumentation\qwen2.5_7b-instruct\v1.22.1_to_v1.23.0_20260310_231659.txt
+
+
+================================================================================
+Running pipeline for open-telemetry/opentelemetry-java-instrumentation v1.22.1 → v1.23.0
+================================================================================
+
+repo_owner                = open-telemetry
+repo_name                 = opentelemetry-java-instrumentation
+v_source                  = v1.22.1
+v_target                  = v1.23.0
+project_context           = 
+current_llm_model         = qwen2.5:7b-instruct
+OLLAMA_NUM_THREADS        = 8
+
+PROMPT:
+
+    You are an expert software technical writer.
+
+    TASK:
+    Generate high-quality release notes for a software release.
+
+    GOALS:
+    - Summarize user-relevant changes
+    - Abstract away low-level implementation details
+    - Avoid redundancy
+    - Use clear, concise language
+
+    TARGET AUDIENCE:
+    End users with technical background.
+
+    GROUNDING RULES (IMPORTANT):
+    - Use ONLY the information explicitly provided in the input data.
+    - Do NOT invent, assume, or infer changes that are not present.
+    - If no information supports a section, OMIT the section entirely.
+
+    OUTPUT FORMAT:
+    - Use Markdown
+    - Include ONLY these sections if relevant:
+      - Added
+      - Changed
+      - Fixed
+      - Removed
+      - Security
+    - Do NOT include introductions, conclusions, titles, or version numbers
+    - Output ONLY the release notes content
+
+    PROJECT CONTEXT:
+    
+
+    INPUT DATA:
+    The software version change is from **v1.22.1** to **v1.23.0**.
+    The following items describe changes between these two versions.
+    They may include commits, issues, and pull requests.
+    Do NOT list them verbatim.
+
+    NOTE:
+    - Commit messages and pull requests may refer to the same change. Treat duplicates as a single change.
+    - If a change was reverted within this release, do NOT list it unless the revert itself is user-relevant.
+
+    CHANGES:
+    [COMMIT] Update version to 1.23.0-SNAPSHOT (#7561)
+[COMMIT] Support Spring Web 6 in library instrumentation (#7551)
+[COMMIT] Post release steps (#7563)
+[COMMIT] Fix potential startup failure (#7567)
+[COMMIT] Bump playVer from 2.8.18 to 2.8.19 (#7569)
+[COMMIT] Bump byte-buddy-dep from 1.12.21 to 1.12.22 in /examples/distro (#7570)
+[COMMIT] Merge change log updates from release/v1.22.x (#7575)
+[COMMIT] docs(okhttp): fix class name in README (#7578)
+[COMMIT] More dependabot (#7577)
+[COMMIT] Bump grpc-bom from 1.52.0 to 1.52.1 (#7590)
+[COMMIT] Bump com.diffplug.spotless from 6.12.1 to 6.13.0 (#7588)
+[COMMIT] Bump nullaway from 0.10.7 to 0.10.8 (#7586)
+[COMMIT] Bump com.diffplug.spotless from 6.12.1 to 6.13.0 in /benchmark-overhead (#7585)
+[COMMIT] Bump spotless-plugin-gradle from 6.12.1 to 6.13.0 in /examples/distro (#7583)
+[COMMIT] Bump testcontainers from 1.16.2 to 1.17.6 in /benchmark-overhead (#7584)
+[COMMIT] Bump mockito-core from 4.11.0 to 5.0.0 in /examples/distro (#7587)
+[COMMIT] Bump joox from 1.6.2 to 2.0.0 in /benchmark-overhead (#7582)
+[COMMIT] Bump dependency-check-gradle from 7.4.4 to 8.0.0 (#7592)
+[COMMIT] Bump com.diffplug.spotless from 6.12.1 to 6.13.0 in /examples/extension (#7581)
+[COMMIT] Convert Spring Webflux client tests to Java; add library instrumentat… (#7566)
+[COMMIT] Fix benchmark-overhead build (#7595)
+[COMMIT] Bump assertj-core from 3.24.1 to 3.24.2 (#7600)
+[COMMIT] Bump byteBuddyVersion from 1.12.20 to 1.12.22 (#7568)
+[COMMIT] Bump spotless-plugin-gradle from 6.12.1 to 6.13.0 (#7591)
+[COMMIT] Disable YodaCondition check and revert some of the changes (#7596)
+[COMMIT] Bump opentelemetry-aws-xray-propagator from 1.21.0-alpha to 1.22.0-alpha (#7601)
+[COMMIT] Add gRPC request metadata instrumentation (#7011)
+[COMMIT] Pass context to content length http metrics meters (#7506)
+[COMMIT] Ignore Mockito 5 (#7602)
+[COMMIT] Revert "Bump dependency-check-gradle from 7.4.4 to 8.0.0 (#7592)" (#7603)
+[COMMIT] Add stale workflow (#7605)
+[COMMIT] Bump actions/stale from 6 to 7 (#7609)
+[COMMIT] Bump io.quarkus from 2.15.3.Final to 2.16.0.Final (#7611)
+[COMMIT] Cassandra java tests (#7390)
+[COMMIT] Bump dependency-check-gradle from 7.4.4 to 8.0.1 (#7610)
+[COMMIT] Update link to restlet framework website (#7617)
+[COMMIT] Update misspell link (#7612)
+[COMMIT] Encode version in spring instrumentations' package names (#7608)
+[COMMIT] Fix NoClassDefFoundError happening when snakeyaml is used on a custom JRE (#7598)
+[COMMIT] Update SQL span name for procedures (#7557)
+[COMMIT] Fix inconsistent handling of net.peer.port in HTTP instrumentations (#7618)
+[COMMIT] Fix dependabot.yml (#7622)
+[COMMIT] Bump spring-boot-starter-web from 3.0.1 to 3.0.2 (#7626)
+[COMMIT] Fix concurrency issue in OpenTelemetryDriver (#7628)
+[COMMIT] Http testing refactor prework (#7623)
+[COMMIT] webflux 5.0 groovy to java tests part 1 (#7625)
+[COMMIT] Rename all methods in all Getters to use the `get*()` naming scheme (#7619)
+[COMMIT] Migrate reactor-netty-0.9 tests to java (#7635)
+[COMMIT] More HTTP testing refactor prework (#7630)
+[COMMIT] Fix build (change param type to builder) (#7640)
+[COMMIT] Fix some instrumentation scope names (#7632)
+[COMMIT] Bump groovyVersion from 4.0.7 to 4.0.8 (#7638)
+[COMMIT] Skip openj9 in PR build (#7641)
+[COMMIT] Parallelize tests across multiple GitHub Actions jobs (#7639)
+[COMMIT] Bump org.gradle.playframework from 0.12 to 0.13 (#7646)
+[COMMIT] Convert logging instrumentation tests to Java (#7631)
+[COMMIT] Remove unnecessary suppression (#7648)
+[COMMIT] Don't check instrumentation version in waitForTraces(), only when ass… (#7643)
+[COMMIT] Partition testLatestDeps to speed up CI (#7649)
+[COMMIT] Add labels for running openj9 and windows tests during PR builds (#7647)
+[COMMIT] Fix job name (#7654)
+[COMMIT] Ratpack services OpenTelemetry (#7477)
+[COMMIT] Bump quarkus-bom from 2.15.3.Final to 2.16.0.Final (#7655)
+[COMMIT] Fix build status badge in the README (#7659)
+[COMMIT] Bump com.diffplug.spotless from 6.13.0 to 6.14.0 (#7661)
+[COMMIT] Bump spotless-plugin-gradle from 6.13.0 to 6.14.0 (#7662)
+[COMMIT] Bump com.diffplug.spotless from 6.13.0 to 6.14.0 in /examples/extension (#7663)
+[COMMIT] Bump spotless-plugin-gradle from 6.13.0 to 6.14.0 in /examples/distro (#7664)
+[COMMIT] Bump com.diffplug.spotless from 6.13.0 to 6.14.0 in /benchmark-overhead (#7668)
+[COMMIT] Bump system-stubs-jupiter from 2.0.1 to 2.0.2 (#7667)
+[COMMIT] Rewrite netty 3.8 tests to Java (#7666)
+[COMMIT] Bump com.fasterxml.jackson.core:jackson-databind from 2.14.1 to 2.14.2 in /examples/extension (#7688)
+[COMMIT] Bump com.fasterxml.jackson.core:jackson-databind from 2.14.1 to 2.14.2 in /examples/distro (#7687)
+[COMMIT] Bump org.mockito:mockito-core from 5.0.0 to 5.1.0 in /examples/distro (#7686)
+[COMMIT] Bump docker/build-push-action from 3 to 4 (#7681)
+[COMMIT] Bump org.owasp:dependency-check-gradle from 8.0.1 to 8.0.2 (#7682)
+[COMMIT] Update Java Version in contributing.md (#7690)
+[COMMIT] Bump com.fasterxml.jackson:jackson-bom from 2.14.1 to 2.14.2 (#7683)
+[COMMIT] Return interface instead of concrete implementation in instrumentatio… (#7658)
+[COMMIT] Bump com.github.ben-manes.versions from 0.44.0 to 0.45.0 (#7699)
+[COMMIT] Bump org.mockito:mockito-core from 5.1.0 to 5.1.1 in /examples/distro (#7700)
+[COMMIT] convert http url connection test from groovy to java (#7676)
+[COMMIT] Bump com.uber.nullaway:nullaway from 0.10.8 to 0.10.9 (#7708)
+[COMMIT] Bump io.quarkus.platform:quarkus-bom from 2.16.0.Final to 2.16.1.Final (#7707)
+[COMMIT] Bump io.quarkus from 2.16.0.Final to 2.16.1.Final (#7709)
+[COMMIT] Ignore janino classloader (#7710)
+[COMMIT] Reformat comment (#7713)
+[COMMIT] Limit azure-core latest dep version (#7722)
+[COMMIT] Fix flaky dubbo tests (#7726)
+[COMMIT] Fix flaky scala executor test (#7725)
+[COMMIT] Fix flaky http url connection test (#7724)
+[COMMIT] Improve type resolution cache for classes in java package (#7714)
+[COMMIT] convert jboss-logmanager-mdc groovy test to java (#7703)
+[COMMIT] Limit junit-pioneer to 1.x (#7727)
+[COMMIT] Fix intellij warnings (#7734)
+[COMMIT] Remove unused import (#7741)
+[COMMIT] Remove some no longer needed netty instrumentation (#7732)
+[COMMIT] Use super to make netty instrumentation clearer (#7736)
+[COMMIT] End netty client span before callbacks (#7737)
+[COMMIT] Remove write context (#7735)
+[COMMIT] modules must be public (#7744)
+[COMMIT] Bump com.diffplug.spotless from 6.14.0 to 6.14.1 (#7747)
+[COMMIT] Bump com.diffplug.spotless from 6.14.0 to 6.14.1 in /examples/extension (#7748)
+[COMMIT] Bump net.bytebuddy:byte-buddy-dep from 1.12.22 to 1.12.23 in /examples/distro (#7749)
+[COMMIT] Bump com.diffplug.spotless:spotless-plugin-gradle from 6.14.0 to 6.14.1 (#7746)
+[COMMIT] Bump com.diffplug.spotless:spotless-plugin-gradle from 6.14.0 to 6.14.1 in /examples/distro (#7750)
+[COMMIT] Bump com.diffplug.spotless from 6.14.0 to 6.14.1 in /benchmark-overhead (#7751)
+[COMMIT] Bump byteBuddyVersion from 1.12.22 to 1.12.23 (#7745)
+[COMMIT] Rename logback mdc library package name (#7752)
+[COMMIT] convert jedis test from groovy to java (#7731)
+[COMMIT] Support slf4j to log4j2 (#7656)
+[COMMIT] Fix vaadin 16 test (#7758)
+[COMMIT] Fix ClassCastException with redisson batch atomically (#7743)
+[COMMIT] Netty refactoring (#7738)
+[COMMIT] Use new org secret (#7759)
+[COMMIT] Add net.host.port to the http.server.active_requests metric (#7757)
+[COMMIT] Allow JDBC autoinstrumentation to use a custom OpenTelemetry instance to be more DI (e.g. Spring Boot) friendly (#7697)
+[COMMIT] Ensure kafka configuration remains serializable (#7754)
+[COMMIT] Dubbo: don't create spans for calls inside the same jvm (#7761)
+[COMMIT] Bump io.quarkus from 2.16.1.Final to 2.16.2.Final (#7766)
+[COMMIT] Bump io.quarkus.platform:quarkus-bom from 2.16.1.Final to 2.16.2.Final (#7767)
+[COMMIT] Bridge metrics batch api (#7762)
+[COMMIT] Document spring-rmi latest dep limit (#7774)
+[COMMIT] Update Azure SDK instrumentation for new version (#7753)
+[COMMIT] Bump com.linecorp.armeria:armeria-grpc from 1.21.0 to 1.22.0 (#7777)
+[COMMIT] Bump com.linecorp.armeria:armeria-junit5 from 1.21.0 to 1.22.0 (#7780)
+[COMMIT] Bump groovyVersion from 4.0.8 to 4.0.9 (#7779)
+[COMMIT] Bump ru.vyarus:gradle-animalsniffer-plugin from 1.6.0 to 1.7.0 (#7778)
+[COMMIT] Migrate ParameterizedClassTest to java (#7768)
+[COMMIT] Update kotlin plugin to 1.8.0 (#7788)
+[COMMIT] Auto-update OTel SDK (#7633)
+[COMMIT] Bump com.diffplug.spotless from 6.14.1 to 6.15.0 (#7797)
+[COMMIT] Bump com.diffplug.spotless:spotless-plugin-gradle from 6.14.1 to 6.15.0 (#7798)
+[COMMIT] Bump io.grpc:grpc-bom from 1.52.1 to 1.53.0 (#7799)
+[COMMIT] Bump com.diffplug.spotless from 6.14.1 to 6.15.0 in /examples/extension (#7793)
+[COMMIT] Bump net.bytebuddy:byte-buddy-dep from 1.12.23 to 1.13.0 in /examples/distro (#7794)
+[COMMIT] Bump com.diffplug.spotless:spotless-plugin-gradle from 6.14.1 to 6.15.0 in /examples/distro (#7792)
+[COMMIT] Bump com.diffplug.spotless from 6.14.1 to 6.15.0 in /benchmark-overhead (#7790)
+[COMMIT] Bump byteBuddyVersion from 1.12.23 to 1.13.0 (#7796)
+[COMMIT] Fix auto-update action (#7804)
+[COMMIT] Update contributing doc for instrumentationModule (#7803)
+[COMMIT] Fix flaky google http client async test (#7805)
+[COMMIT] Migrating 3 more tests from groovy to java (#7781)
+[COMMIT] Fix autoconfigure for spring boot 3 (#7784)
+[COMMIT] Second attempt at fixing serializing kafka configuration (#7789)
+[COMMIT] Convert kafka-clients unit test from groovy to java (#7770)
+[COMMIT] Change Spring Scheduling to not capture span for one-time jobs (only repeated jobs) (#7760)
+[COMMIT] Update the OpenTelemetry SDK version to 1.23.0 (#7800)
+[COMMIT] Add instrumentation for hibernate 6 (#7773)
+[COMMIT] Put `http.route` attribute onto `http.server.duration` on Play framework request processing (#7801)
+[COMMIT] Tests need to reset GlobalEventEmitterProvider (#7810)
+[COMMIT] Update HTTP span name extractors (#7730)
+[COMMIT] Add Jakarta JSF 3.0+ instrumentation (#7786)
+[COMMIT] Grpc client instrumentation net.sock.peer.addr (#7742)
+[COMMIT] Fix play smoke test (#7819)
+[COMMIT] Bump commons-fileupload:commons-fileupload from 1.4 to 1.5 (#7817)
+[COMMIT] Bump com.linecorp.armeria:armeria-grpc from 1.22.0 to 1.22.1 (#7816)
+[COMMIT] Encode version in library instrumentations' package names (#7764)
+[COMMIT] Bump com.linecorp.armeria:armeria-junit5 from 1.22.0 to 1.22.1 (#7818)
+[COMMIT] Bump org.owasp:dependency-check-gradle from 8.0.2 to 8.1.0 (#7815)
+[COMMIT] Remove unused file (#7814)
+[COMMIT] Rename module from jsf-common to jsf-javax-common (#7812)
+[COMMIT] Update the OpenTelemetry SDK version to 1.23.1 (#7825)
+[COMMIT] Update change log for 1.23.0 (#7823)
+[COMMIT] [release/v1.23.x] Prepare release 1.23.0 (#7827)
+[PULL REQUEST] Add gRPC request metadata instrumentation
+[PULL REQUEST] Cassandra java tests
+[PULL REQUEST] Ratpack services OpenTelemetry
+[PULL REQUEST] Pass context to content length http metrics meters
+[PULL REQUEST] Support Spring Web 6 in library instrumentation
+[PULL REQUEST] Update SQL span name for procedures
+[PULL REQUEST] Update version to 1.23.0-SNAPSHOT
+[PULL REQUEST] Post release steps
+[PULL REQUEST] Convert Spring Webflux client tests to Java; add library instrumentat…
+[PULL REQUEST] Fix potential startup failure
+[PULL REQUEST] Bump byteBuddyVersion from 1.12.20 to 1.12.22
+[PULL REQUEST] Bump playVer from 2.8.18 to 2.8.19
+[PULL REQUEST] Bump byte-buddy-dep from 1.12.21 to 1.12.22 in /examples/distro
+[PULL REQUEST] Merge change log updates from release/v1.22.x
+[PULL REQUEST] More dependabot
+[PULL REQUEST] docs(okhttp): fix class name in README
+[PULL REQUEST] Bump com.diffplug.spotless from 6.12.1 to 6.13.0 in /examples/extension
+[PULL REQUEST] Bump joox from 1.6.2 to 2.0.0 in /benchmark-overhead
+[PULL REQUEST] Bump spotless-plugin-gradle from 6.12.1 to 6.13.0 in /examples/distro
+[PULL REQUEST] Bump testcontainers from 1.16.2 to 1.17.6 in /benchmark-overhead
+[PULL REQUEST] Bump com.diffplug.spotless from 6.12.1 to 6.13.0 in /benchmark-overhead
+[PULL REQUEST] Bump nullaway from 0.10.7 to 0.10.8
+[PULL REQUEST] Bump mockito-core from 4.11.0 to 5.0.0 in /examples/distro
+[PULL REQUEST] Bump com.diffplug.spotless from 6.12.1 to 6.13.0
+[PULL REQUEST] Bump grpc-bom from 1.52.0 to 1.52.1
+[PULL REQUEST] Bump spotless-plugin-gradle from 6.12.1 to 6.13.0
+[PULL REQUEST] Bump dependency-check-gradle from 7.4.4 to 8.0.0
+[PULL REQUEST] Fix benchmark-overhead build
+[PULL REQUEST] Disable YodaCondition check and revert some of the changes
+[PULL REQUEST] Fix NoClassDefFoundError happening when snakeyaml is used on a custom JRE
+[PULL REQUEST] Bump assertj-core from 3.24.1 to 3.24.2
+[PULL REQUEST] Bump opentelemetry-aws-xray-propagator from 1.21.0-alpha to 1.22.0-alpha
+[PULL REQUEST] Ignore Mockito 5
+[PULL REQUEST] Revert "Bump dependency-check-gradle from 7.4.4 to 8.0.0 (#7592)"
+[PULL REQUEST] Add stale workflow
+[PULL REQUEST] Encode version in spring instrumentations' package names
+[PULL REQUEST] Bump actions/stale from 6 to 7
+[PULL REQUEST] Bump dependency-check-gradle from 7.4.4 to 8.0.1
+[PULL REQUEST] Bump io.quarkus from 2.15.3.Final to 2.16.0.Final
+[PULL REQUEST] Update misspell link
+[PULL REQUEST] Update link to restlet framework website
+[PULL REQUEST] Fix inconsistent handling of net.peer.port in HTTP instrumentations
+[PULL REQUEST] Rename all methods in all Getters to use the `get*()` naming scheme
+[PULL REQUEST] Fix dependabot.yml
+[PULL REQUEST] Http testing refactor prework
+[PULL REQUEST] webflux 5.0 groovy to java tests part 1
+[PULL REQUEST] Bump spring-boot-starter-web from 3.0.1 to 3.0.2
+[PULL REQUEST] Fix concurrency issue in OpenTelemetryDriver
+[PULL REQUEST] More HTTP testing refactor prework
+[PULL REQUEST] Convert logging instrumentation tests to Java
+[PULL REQUEST] Fix some instrumentation scope names
+[PULL REQUEST] Auto-update OTel SDK
+[PULL REQUEST] Migrate reactor-netty-0.9 tests to java
+[PULL REQUEST] Bump groovyVersion from 4.0.7 to 4.0.8
+[PULL REQUEST] Parallelize tests across multiple GitHub Actions jobs
+[PULL REQUEST] Fix build (change param type to builder)
+[PULL REQUEST] Skip openj9 in PR build
+[PULL REQUEST] Don't check instrumentation version in waitForTraces(), only when ass…
+[PULL REQUEST] Bump org.gradle.playframework from 0.12 to 0.13
+[PULL REQUEST] Add labels for running openj9 and windows tests during PR builds
+[PULL REQUEST] Remove unnecessary suppression
+[PULL REQUEST] Partition testLatestDeps to speed up CI
+[PULL REQUEST] Fix job name
+[PULL REQUEST] Bump quarkus-bom from 2.15.3.Final to 2.16.0.Final
+[PULL REQUEST] Support slf4j to log4j2
+[PULL REQUEST] Return interface instead of concrete implementation in instrumentatio…
+[PULL REQUEST] Fix build status badge in the README
+[PULL REQUEST] Bump com.diffplug.spotless from 6.13.0 to 6.14.0
+[PULL REQUEST] Bump spotless-plugin-gradle from 6.13.0 to 6.14.0
+[PULL REQUEST] Bump com.diffplug.spotless from 6.13.0 to 6.14.0 in /examples/extension
+[PULL REQUEST] Bump spotless-plugin-gradle from 6.13.0 to 6.14.0 in /examples/distro
+[PULL REQUEST] Rewrite netty 3.8 tests to Java
+[PULL REQUEST] Bump system-stubs-jupiter from 2.0.1 to 2.0.2
+[PULL REQUEST] Bump com.diffplug.spotless from 6.13.0 to 6.14.0 in /benchmark-overhead
+[PULL REQUEST] convert http url connection test from groovy to java
+[PULL REQUEST] Bump docker/build-push-action from 3 to 4
+[PULL REQUEST] Bump org.owasp:dependency-check-gradle from 8.0.1 to 8.0.2
+[PULL REQUEST] Bump com.fasterxml.jackson:jackson-bom from 2.14.1 to 2.14.2
+[PULL REQUEST] Bump org.mockito:mockito-core from 5.0.0 to 5.1.0 in /examples/distro
+[PULL REQUEST] Bump com.fasterxml.jackson.core:jackson-databind from 2.14.1 to 2.14.2 in /examples/distro
+[PULL REQUEST] Bump com.fasterxml.jackson.core:jackson-databind from 2.14.1 to 2.14.2 in /examples/extension
+[PULL REQUEST] Update Java Version in contributing.md
+[PULL REQUEST] Allow JDBC autoinstrumentation to use a custom OpenTelemetry instance to be more DI (e.g. Spring Boot) friendly
+[PULL REQUEST] Bump com.github.ben-manes.versions from 0.44.0 to 0.45.0
+[PULL REQUEST] Bump org.mockito:mockito-core from 5.1.0 to 5.1.1 in /examples/distro
+[PULL REQUEST] convert jboss-logmanager-mdc groovy test to java
+[PULL REQUEST] Bump io.quarkus.platform:quarkus-bom from 2.16.0.Final to 2.16.1.Final
+[PULL REQUEST] Bump com.uber.nullaway:nullaway from 0.10.8 to 0.10.9
+[PULL REQUEST] Bump io.quarkus from 2.16.0.Final to 2.16.1.Final
+[PULL REQUEST] Ignore janino classloader
+[PULL REQUEST] Reformat comment
+[PULL REQUEST] Improve type resolution cache for classes in java package
+[PULL REQUEST] Limit azure-core latest dep version
+[PULL REQUEST] Fix flaky http url connection test
+[PULL REQUEST] Fix flaky scala executor test
+[PULL REQUEST] Fix flaky dubbo tests
+[PULL REQUEST] Limit junit-pioneer to 1.x
+[PULL REQUEST] Update HTTP span name extractors
+[PULL REQUEST] convert jedis test from groovy to java
+[PULL REQUEST] Remove some no longer needed netty instrumentation
+[PULL REQUEST] Fix intellij warnings
+[PULL REQUEST] Remove write context
+[PULL REQUEST] Use super to make netty instrumentation clearer
+[PULL REQUEST] End netty client span before callbacks
+[PULL REQUEST] Netty refactoring
+[PULL REQUEST] Remove unused import
+[PULL REQUEST] Grpc client instrumentation net.sock.peer.addr
+[PULL REQUEST] Fix ClassCastException with redisson batch atomically
+[PULL REQUEST] modules must be public
+[PULL REQUEST] Bump byteBuddyVersion from 1.12.22 to 1.12.23
+[PULL REQUEST] Bump com.diffplug.spotless:spotless-plugin-gradle from 6.14.0 to 6.14.1
+[PULL REQUEST] Bump com.diffplug.spotless from 6.14.0 to 6.14.1
+[PULL REQUEST] Bump com.diffplug.spotless from 6.14.0 to 6.14.1 in /examples/extension
+[PULL REQUEST] Bump net.bytebuddy:byte-buddy-dep from 1.12.22 to 1.12.23 in /examples/distro
+[PULL REQUEST] Bump com.diffplug.spotless:spotless-plugin-gradle from 6.14.0 to 6.14.1 in /examples/distro
+[PULL REQUEST] Bump com.diffplug.spotless from 6.14.0 to 6.14.1 in /benchmark-overhead
+[PULL REQUEST] Rename logback mdc library package name
+[PULL REQUEST] Update Azure SDK instrumentation for new version
+[PULL REQUEST] Ensure kafka configuration remains serializable
+[PULL REQUEST] Add net.host.port to the http.server.active_requests metric
+[PULL REQUEST] Fix vaadin 16 test
+[PULL REQUEST] Use new org secret
+[PULL REQUEST] Change Spring Scheduling to not capture span for one-time jobs (only repeated jobs)
+[PULL REQUEST] Dubbo: don't create spans for calls inside the same jvm
+[PULL REQUEST] Bridge metrics batch api
+[PULL REQUEST] Encode version in library instrumentations' package names
+[PULL REQUEST] Bump io.quarkus from 2.16.1.Final to 2.16.2.Final
+[PULL REQUEST] Bump io.quarkus.platform:quarkus-bom from 2.16.1.Final to 2.16.2.Final
+[PULL REQUEST] Migrate ParameterizedClassTest to java
+[PULL REQUEST] Convert kafka-clients unit test from groovy to java
+[PULL REQUEST] Add instrumentation for hibernate 6
+[PULL REQUEST] Document spring-rmi latest dep limit
+[PULL REQUEST] Bump com.linecorp.armeria:armeria-grpc from 1.21.0 to 1.22.0
+[PULL REQUEST] Bump ru.vyarus:gradle-animalsniffer-plugin from 1.6.0 to 1.7.0
+[PULL REQUEST] Bump groovyVersion from 4.0.8 to 4.0.9
+[PULL REQUEST] Bump com.linecorp.armeria:armeria-junit5 from 1.21.0 to 1.22.0
+[PULL REQUEST] Migrating 3 more tests from groovy to java
+[PULL REQUEST] Fix autoconfigure for spring boot 3
+[PULL REQUEST] Add Jakarta JSF 3.0+ instrumentation
+[PULL REQUEST] Update kotlin plugin to 1.8.0
+[PULL REQUEST] Second attempt at fixing serializing kafka configuration
+[PULL REQUEST] Bump com.diffplug.spotless from 6.14.1 to 6.15.0 in /benchmark-overhead
+[PULL REQUEST] Bump com.diffplug.spotless:spotless-plugin-gradle from 6.14.1 to 6.15.0 in /examples/distro
+[PULL REQUEST] Bump com.diffplug.spotless from 6.14.1 to 6.15.0 in /examples/extension
+[PULL REQUEST] Bump net.bytebuddy:byte-buddy-dep from 1.12.23 to 1.13.0 in /examples/distro
+[PULL REQUEST] Bump byteBuddyVersion from 1.12.23 to 1.13.0
+[PULL REQUEST] Bump com.diffplug.spotless from 6.14.1 to 6.15.0
+[PULL REQUEST] Bump com.diffplug.spotless:spotless-plugin-gradle from 6.14.1 to 6.15.0
+[PULL REQUEST] Bump io.grpc:grpc-bom from 1.52.1 to 1.53.0
+[PULL REQUEST] Update the OpenTelemetry SDK version to 1.23.0
+[PULL REQUEST] Put `http.route` attribute onto `http.server.duration` on Play framework request processing
+[PULL REQUEST] Update contributing doc for instrumentationModule
+[PULL REQUEST] Fix auto-update action
+[PULL REQUEST] Fix flaky google http client async test
+[PULL REQUEST] Tests need to reset GlobalEventEmitterProvider
+[PULL REQUEST] Rename module from jsf-common to jsf-javax-common
+[PULL REQUEST] Remove unused file
+[PULL REQUEST] Bump org.owasp:dependency-check-gradle from 8.0.2 to 8.1.0
+[PULL REQUEST] Bump com.linecorp.armeria:armeria-grpc from 1.22.0 to 1.22.1
+[PULL REQUEST] Bump commons-fileupload:commons-fileupload from 1.4 to 1.5
+[PULL REQUEST] Bump com.linecorp.armeria:armeria-junit5 from 1.22.0 to 1.22.1
+[PULL REQUEST] Fix play smoke test
+[PULL REQUEST] Update change log for 1.23.0
+[PULL REQUEST] Update the OpenTelemetry SDK version to 1.23.1
+[PULL REQUEST] [release/v1.23.x] Prepare release 1.23.0
+    
+
+GENERATED RELEASE NOTES:
+This list appears to be a series of pull requests for a project, likely related to an open-source library or framework that integrates with the OpenTelemetry SDK for monitoring and tracing applications. The pull requests cover various changes such as:
+
+- Updating dependencies (e.g., `com.diffplug.spotless`, `io.grpc:grpc-bom`, `net.bytebuddy:byte-buddy-dep`)
+- Refactoring tests from Groovy to Java
+- Adding new instrumentation support for frameworks like Hibernate 6, Spring Boot 3, and Jakarta JSF
+- Improving existing functionality (e.g., fixing serialization issues in Kafka configuration)
+- Enhancing metrics and span behavior
+
+Here are some key points that can be inferred:
+
+1. **Dependency Management**: Several pull requests involve updating dependencies to their latest versions or specific minor releases.
+2. **Code Refactoring**: There is a significant effort to refactor tests from Groovy to Java, which suggests an ongoing modernization of the project's test suite.
+3. **Instrumentation Enhancements**: New instrumentation for frameworks like Hibernate 6 and Spring Boot 3 are being added, indicating support for newer technologies.
+4. **Behavioral Improvements**: Fixes and improvements in how spans and metrics are handled (e.g., fixing serialization issues) show a focus on robustness and reliability.
+
+If you need more specific details about any particular pull request or if there's a specific aspect of the project you're interested in, feel free to ask!
+
+EVALUATION:
+
+COVERAGE:
+bleu4: 0.20
+rougeL: 0.13
+meteor: 0.04
+
+HALLUCINATION RATE:
+bleu4: 0.80
+rougeL: 0.40
+meteor: 0.96

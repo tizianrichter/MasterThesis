@@ -1,0 +1,257 @@
+Logging to: logs\oai\openapi-specification\qwen2.5_7b-instruct\3.0.2_to_3.0.3_20260310_231024.txt
+
+
+================================================================================
+Running pipeline for oai/openapi-specification 3.0.2 → 3.0.3
+================================================================================
+
+repo_owner                = oai
+repo_name                 = openapi-specification
+v_source                  = 3.0.2
+v_target                  = 3.0.3
+project_context           = 
+current_llm_model         = qwen2.5:7b-instruct
+OLLAMA_NUM_THREADS        = 8
+
+PROMPT:
+
+    You are an expert software technical writer.
+
+    TASK:
+    Generate high-quality release notes for a software release.
+
+    GOALS:
+    - Summarize user-relevant changes
+    - Abstract away low-level implementation details
+    - Avoid redundancy
+    - Use clear, concise language
+
+    TARGET AUDIENCE:
+    End users with technical background.
+
+    GROUNDING RULES (IMPORTANT):
+    - Use ONLY the information explicitly provided in the input data.
+    - Do NOT invent, assume, or infer changes that are not present.
+    - If no information supports a section, OMIT the section entirely.
+
+    OUTPUT FORMAT:
+    - Use Markdown
+    - Include ONLY these sections if relevant:
+      - Added
+      - Changed
+      - Fixed
+      - Removed
+      - Security
+    - Do NOT include introductions, conclusions, titles, or version numbers
+    - Output ONLY the release notes content
+
+    PROJECT CONTEXT:
+    
+
+    INPUT DATA:
+    The software version change is from **3.0.2** to **3.0.3**.
+    The following items describe changes between these two versions.
+    They may include commits, issues, and pull requests.
+    Do NOT list them verbatim.
+
+    NOTE:
+    - Commit messages and pull requests may refer to the same change. Treat duplicates as a single change.
+    - If a change was reverted within this release, do NOT list it unless the revert itself is user-relevant.
+
+    CHANGES:
+    [COMMIT] Initial schema commit
+[COMMIT] so many fixes
+[COMMIT] items array -> object
+[COMMIT] A couple more fixes
+[COMMIT] Fixed restriction on Server's url
+[COMMIT] make callbacks great again!
+[COMMIT] fixed servervariable.enum
+[COMMIT] Adding C# comment reader --> OAI doc tooling.
+[COMMIT] Add API Sprout to new mock server section
+[COMMIT] Use semver for API version
+[COMMIT] Change CLI -> Go
+[COMMIT] IMPLEMENTATIONS.md: add "kin-openapi"
+[COMMIT] Add PHP-CRUD-API
+[COMMIT] Update README.md
+[COMMIT] Merge pull request #1705 from OAI/Update-future-versions
+[COMMIT] Fix "current specification" version
+[COMMIT] Merge pull request #1709 from maverickelementalch/patch-2
+[COMMIT] Simplify Travis CI setup
+[COMMIT] Remove v1.2/v2.0 test fixtures
+[COMMIT] Prep package.json for schema publishing
+[COMMIT] Update schemas/v2.0/README.md etc
+[COMMIT] Merge pull request #1730 from MikeRalphson/travis-simplification2
+[COMMIT] Use "uri-reference", not "url" or "uriref"
+[COMMIT] Fix usage of "not"
+[COMMIT] Use patternProperties for $ref
+[COMMIT] Merge pull request #1703 from mevdschee/patch-1
+[COMMIT] Merge pull request #1696 from jban332/patch-1
+[COMMIT] Merge pull request #1682 from dragetd/patch-1
+[COMMIT] Merge pull request #1645 from danielgtaylor/patch-1
+[COMMIT] XML namespace must be an absolute URI
+[COMMIT] In Daft 5, schema.enum only SHOULD be unique, not MUST
+[COMMIT] parameters arrays MUST be unique on name & in, therefore MUST be unique across all properties
+[COMMIT] tags array MUST be unique by name, therefore MUST be unique across all properties
+[COMMIT] responses object keys pattern must be anchored
+[COMMIT] responses object map MAY be extended with specification extensions
+[COMMIT] Response.headers map missing type:object
+[COMMIT] Merge pull request #1744 from handrews/schema-fixes
+[COMMIT] add Spectral to implementations
+[COMMIT] Fix typo in IMPLEMENTATIONS.md.
+[COMMIT] Add FastAPI to implementations
+[COMMIT] Fix typos.
+[COMMIT] Merge pull request #1810 from Capstan/typos
+[COMMIT] Merge branch 'master' into doc
+[COMMIT] Merge pull request #1787 from tiangolo/fastapi
+[COMMIT] Merge pull request #1780 from H1Gdev/doc
+[COMMIT] Merge pull request #1776 from tbarn/master
+[COMMIT] Merge pull request #1606 from EricAtMSFT/implementation_update
+[COMMIT] add openapi validator
+[COMMIT] Pre-format schema to improve changes relevancy
+[COMMIT] Simplify Schema or Reference
+[COMMIT] Combine HTTP Methods in `patternProperties`
+[COMMIT] Define Parameter as a filtered superset
+[COMMIT] Combine some definitions as filtered supersets
+[COMMIT] Move XOR logic to definitions, remove unused definition NonBearerHTTPSecurityScheme
+[COMMIT] Embed references
+[COMMIT] Revert embed references as it flattens definition scopes and therefore affects `*Of`, `required` behavior
+[COMMIT] Remove temporary README
+[COMMIT] Revert embedding $ref in Schema
+[COMMIT] Merge pull request #1800 from vearutop/oas3-schema
+[COMMIT] Add schema metadata
+[COMMIT] Add fastify oas
+[COMMIT] JSON version of the schema
+[COMMIT] Added README with basic information
+[COMMIT] Update README.md
+[COMMIT] Merge pull request #1897 from OAI/oas3-schema
+[COMMIT] Alternative Schema Proposal (#1868)
+[COMMIT] add Scorpio HTTP client library to IMPLEMENTATIONS.md (#1908)
+[COMMIT] Create TOB.md
+[COMMIT] Update TOB.md
+[COMMIT] Update TOB.md
+[COMMIT] Fix missing schema type in YAML example spec (#1923)
+[COMMIT] Add missing object type to 3.0 examples
+[COMMIT] Update TOB.md
+[COMMIT] Update TOB.md
+[COMMIT] Update TOB.md
+[COMMIT] Update TOB.md
+[COMMIT] Update TOB.md
+[COMMIT] Update TOB.md
+[COMMIT] Merge pull request #1922 from OAI/ncaidin-patch-1
+[COMMIT] Fix example response reference (#1670)
+[COMMIT] Add first draft of webhooks proposal
+[COMMIT] Remain OpenAPI Studio
+[COMMIT] Merge pull request #1976 from aaadel/patch-1
+[COMMIT] Add Microsoft VS Code OAS 3.0 extension (#1952)
+[COMMIT] Fix bad link for altenrative schema proposal (#1949)
+[COMMIT] add OpenAPI-Delphi implementation (#1939)
+[COMMIT] Add tool to list (#1932)
+[COMMIT] Update IMPLEMENTATIONS.md
+[COMMIT] Merge pull request #1931 from sjaensch/examples-30-add-missing-object-type
+[COMMIT] Merge branch 'master' into feature/openapi-validator
+[COMMIT] Merge pull request #1860 from mieszkomalawski/feature/openapi-validator
+[COMMIT] Merge pull request #1983 from springdoc/patch-1
+[COMMIT] Try to make the incoming/outgoing language clearer in the intro section
+[COMMIT] Merge pull request #1974 from lornajane/webhooks
+[COMMIT] Add Redoc to user interface implementations
+[COMMIT] Add spring-openapi to low-level tooling in IMPLEMENTATIONS.md
+[COMMIT] Adjusting description of Spring-openapi in IMPLEMENTATIONS.md based on pull request suggestion
+[COMMIT] Merge pull request #2011 from adamaltman/patch-1
+[COMMIT] Add proposal to clarify `nullable` (#2050)
+[COMMIT] Proposal/Clarify Nullable - Add interactions with default (#2058)
+[COMMIT] Tiny corrections
+[COMMIT] Merge pull request #2074 from tedepstein/patch-4
+[COMMIT] Merge pull request #2028 from jrcodeza/master
+[COMMIT] Add openapi-backend, openapi-client-axios to implementations (#1918)
+[COMMIT] remove redundant whitespace (#1834)
+[COMMIT] Merge branch 'master' into patch-1
+[COMMIT] Merge pull request #1894 from mhf-ir/patch-1
+[COMMIT] OpenAPI not Open API
+[COMMIT] Overlay proposal (#1864)
+[COMMIT] Fixed indent of value (#2086)
+[COMMIT] Merge pull request #2080 from philsturgeon/openapi-not-open-api
+[COMMIT] actions: add mdv to replace Travis (#2139)
+[COMMIT] OAS v3.0.3 Release (#2148)
+[COMMIT] Update README.md
+[PULL REQUEST] Adding C# comment reader that converts to OpenAPI.NET doc tooling.
+[PULL REQUEST] Add API Sprout to new mock server section
+[PULL REQUEST] Fix example response reference
+[PULL REQUEST] Use semver for API version in example
+[PULL REQUEST] Implementations: add "kin-openapi"
+[PULL REQUEST] Add PHP-CRUD-API
+[PULL REQUEST] Update README.md
+[PULL REQUEST] Fix "current specification" version
+[PULL REQUEST] Registry/Pretty-Spec prep: Travis / package.json simplification
+[PULL REQUEST] Initial batch of minor schema fixes
+[PULL REQUEST] add Spectral to implementations
+[PULL REQUEST] Fix typo in IMPLEMENTATIONS.md.
+[PULL REQUEST] Add FastAPI to Implementations
+[PULL REQUEST] Reduce duplications and complexity in v3.0 JSON Schema
+[PULL REQUEST] Fix typos.
+[PULL REQUEST] remove redundant whitespace
+[PULL REQUEST] add openapi validator
+[PULL REQUEST] Overlay proposal
+[PULL REQUEST] Alternative Schema Proposal
+[PULL REQUEST] Add fastify oas
+[PULL REQUEST] OAS3 Schema to `master`
+[PULL REQUEST] add Scorpio HTTP client library to IMPLEMENTATIONS.md
+[PULL REQUEST] Add openapi-backend, openapi-client-axios to implementations
+[PULL REQUEST] TOB members 2019
+[PULL REQUEST] Fix missing schema type in YAML example spec
+[PULL REQUEST] Add missing object type to 3.0 examples
+[PULL REQUEST] Add tool to list
+[PULL REQUEST] add OpenAPI-Delphi implementation
+[PULL REQUEST] Fix bad link for altenrative schema proposal
+[PULL REQUEST] Add Microsoft VS Code OAS 3.0 extension
+[PULL REQUEST] Proposal: Support Webhooks as well as Callbacks
+[PULL REQUEST] Remain OpenAPI Studio
+[PULL REQUEST] Update IMPLEMENTATIONS.md
+[PULL REQUEST] Add Redoc to user interface implementations
+[PULL REQUEST] Add spring-openapi to low-level tooling in IMPLEMENTATIONS.md
+[PULL REQUEST] Add proposal to clarify `nullable`
+[PULL REQUEST] Proposal/Clarify Nullable - Add interactions with default
+[PULL REQUEST] Tiny corrections to proposal
+[PULL REQUEST] OpenAPI not Open API
+[PULL REQUEST] Fixed examples in Overlay proposal
+[PULL REQUEST] actions: add mdv to replace Travis
+[PULL REQUEST] OAS v3.0.3 Release
+    
+
+GENERATED RELEASE NOTES:
+- Added:
+  - `openapi-validator` for schema validation
+  - `FastAPI` and `spring-openapi` as low-level tooling implementations
+  - `Redoc` to user interface implementations
+  - `Scorpio HTTP client library`
+  - `openapi-backend` and `openapi-client-axios`
+
+- Changed:
+  - Updated README.md for clarity and minor improvements
+  - Simplified Travis CI setup and package.json configuration
+  - Replaced Travis with GitHub Actions for continuous integration
+  - Fixed example response references and schema types in YAML examples
+  - Adjusted descriptions and added `OpenAPI-Delphi` implementation to IMPLEMENTATIONS.md
+
+- Fixed:
+  - Typographical errors in documentation
+  - Issues related to unique parameter and tag names, responses object keys, and schema definitions
+  - Incorrect usage of terms like "url" vs. "uri-reference"
+
+- Removed:
+  - V1.2/v2.0 test fixtures
+  - Temporary README file
+
+- Security:
+  - Fixed potential issues in server variable handling (`servervariable.enum`)
+
+EVALUATION:
+
+COVERAGE:
+bleu4: 0.22
+rougeL: 0.45
+meteor: 0.22
+
+HALLUCINATION RATE:
+bleu4: 0.77
+rougeL: 0.63
+meteor: 0.67

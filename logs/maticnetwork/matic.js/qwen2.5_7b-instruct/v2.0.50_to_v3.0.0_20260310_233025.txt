@@ -1,0 +1,244 @@
+Logging to: logs\maticnetwork\matic.js\qwen2.5_7b-instruct\v2.0.50_to_v3.0.0_20260310_233025.txt
+
+
+================================================================================
+Running pipeline for maticnetwork/matic.js v2.0.50 → v3.0.0
+================================================================================
+
+repo_owner                = maticnetwork
+repo_name                 = matic.js
+v_source                  = v2.0.50
+v_target                  = v3.0.0
+project_context           = 
+current_llm_model         = qwen2.5:7b-instruct
+OLLAMA_NUM_THREADS        = 8
+
+PROMPT:
+
+    You are an expert software technical writer.
+
+    TASK:
+    Generate high-quality release notes for a software release.
+
+    GOALS:
+    - Summarize user-relevant changes
+    - Abstract away low-level implementation details
+    - Avoid redundancy
+    - Use clear, concise language
+
+    TARGET AUDIENCE:
+    End users with technical background.
+
+    GROUNDING RULES (IMPORTANT):
+    - Use ONLY the information explicitly provided in the input data.
+    - Do NOT invent, assume, or infer changes that are not present.
+    - If no information supports a section, OMIT the section entirely.
+
+    OUTPUT FORMAT:
+    - Use Markdown
+    - Include ONLY these sections if relevant:
+      - Added
+      - Changed
+      - Fixed
+      - Removed
+      - Security
+    - Do NOT include introductions, conclusions, titles, or version numbers
+    - Output ONLY the release notes content
+
+    PROJECT CONTEXT:
+    
+
+    INPUT DATA:
+    The software version change is from **v2.0.50** to **v3.0.0**.
+    The following items describe changes between these two versions.
+    They may include commits, issues, and pull requests.
+    Do NOT list them verbatim.
+
+    NOTE:
+    - Commit messages and pull requests may refer to the same change. Treat duplicates as a single change.
+    - If a change was reverted within this release, do NOT list it unless the revert itself is user-relevant.
+
+    CHANGES:
+    [COMMIT] architect for support of web3.js, etherjs
+[COMMIT] fix erc20 balance in plasma
+[COMMIT] implement approve in erc20
+[COMMIT] set config in read call of balance in erc20 plasma
+[COMMIT] add abstract class for contract method
+[COMMIT] create eventBusPromise
+[COMMIT] take tokenAddress in methods - store in token instance
+[COMMIT] take isParent on erc20 mthod
+[COMMIT] rm path support, rm unused packages
+[COMMIT] implement logger
+[COMMIT] add maxapprove - erc20
+[COMMIT] processWrite method for reuse in write call
+[COMMIT] create config.js for test
+[COMMIT] rm config.js cached
+[COMMIT] return tx_receipt type from write tx
+[COMMIT] create pos client
+[COMMIT] add exit manager
+[COMMIT] implement exiterc20 legacy
+[COMMIT] implment fast merkel proof
+[COMMIT] implement isExited
+[COMMIT] implement erc20 deposit
+[COMMIT] fix: process write default option
+[COMMIT] new: getBalance method
+[COMMIT] new: tokenOfOwnerByIndex() implementation
+[COMMIT] new: safeDepositERC721() implementation
+[COMMIT] fix : deposit pos erc20
+[COMMIT] create root manager
+[COMMIT] fix: proof building in pos erc20 exit
+[COMMIT] fix: isExited
+[COMMIT] test exit withdraw
+[COMMIT] merge fastproof and normal proof
+[COMMIT] fix: fast exit
+[COMMIT] new: startWithdrawForNFT() implementation
+[COMMIT] implement erc721
+[COMMIT] new: erc20 plasma deposit
+[COMMIT] Merge pull request #1 from wolf76/ug-feat_v3
+[COMMIT] Merge pull request #1 from ankitboghra/ankit/plasma-erc721-methods
+[COMMIT] Merge branch 'ug-feat_v3' into ug-feat_v3
+[COMMIT] create converter, refactor client config interface
+[COMMIT] Merge pull request #2 from ankitboghra/ug-feat_v3
+[COMMIT] fix utils import issue
+[COMMIT] move abstract class to abstract folder
+[COMMIT] rm models folder
+[COMMIT] create error helper
+[COMMIT] update version
+[COMMIT] rename inherited to web3js
+[COMMIT] implement ethers
+[COMMIT] test balance with ethers
+[COMMIT] fix issue with write api for ethers
+[COMMIT] use abi from abi store url
+[COMMIT] evaluate contract asychronously
+[COMMIT] add init on pos
+[COMMIT] implement ether plasma
+[COMMIT] implement plasma erc20
+[COMMIT] fix plasma deposit
+[COMMIT] change some prop in IContractInitParam
+[COMMIT] exit plasma tokens on the erc20
+[COMMIT] release v - 3.0.0-beta.1
+[COMMIT] rm ethers
+[COMMIT] intiate logger in web3sidechainclient
+[COMMIT] implement transfer
+[COMMIT] make transfer private
+[COMMIT] implement safeDeposit in plasma erc721,  create setABI in abimanager
+[COMMIT] implement erc721 withdraw
+[COMMIT] throw error when proof api is not set and fast api is called
+[COMMIT] fix log issue
+[COMMIT] add address in contract_method
+[COMMIT] implement getTOkensCount, getAllTokens in pos erc721
+[COMMIT] add examples for erc721 pos
+[COMMIT] implement root and child check in all api
+[COMMIT] add example for transfer erc20, balance
+[COMMIT] add erc20 withdraw example
+[COMMIT] implement allowance in plasma and pos
+[COMMIT] rename isExited -> isWithdrawExited
+[COMMIT] implement depositEther and remove ether
+[COMMIT] add config for erc721Predicate, erc20Predicate
+[COMMIT] use MAX_AMOUNT
+[COMMIT] implement deposit ether for pos
+[COMMIT] move depositEther to client
+[COMMIT] rm assert
+[COMMIT] create web ,umd config
+[COMMIT] rename exit manager to exitUtil
+[COMMIT] rename exit_manager to exit_util
+[COMMIT] rm plasma
+[COMMIT] add .env in test
+[COMMIT] make web3sidechainclient generic to take config
+[COMMIT] rm plasma folder from examples
+[COMMIT] add test for get balance erc20
+[COMMIT] add test for allowance
+[COMMIT] add erc721 read test
+[COMMIT] add test for isWithdrawExited
+[COMMIT] implement isDeposited
+[COMMIT] add test for erc20 deposit, approve, transfer
+[COMMIT] rm log using console and set using logger
+[COMMIT] add eip1559 support
+[COMMIT] add test for erp1159 check , trasnsfer child
+[COMMIT] fix issue with tx config getting copied
+[COMMIT] add test for chainId
+[COMMIT] add getWeb3Client
+[COMMIT] add .envin npmignore
+[COMMIT] rm erc1155,fix gasPrice issue
+[COMMIT] add test for approve, deposit, depositEther with returnTransaction
+[COMMIT] add test for erc71 transfer
+[COMMIT] create a common method for `isWithdrawExited` - isWithdrawn, test for isWithdrawExited in erc721
+[COMMIT] add withdrawExit faster test
+[COMMIT] pass web3sidechainclient in exitutil
+[COMMIT] fix isDeposited
+[COMMIT] update example with latest version of maticjs - 3.0.0.beta.9
+[COMMIT] fix: erc20 examples and added extra APIs
+[COMMIT] fix: erc721 examples and added missed APIs
+[COMMIT] fix issue with depositMany in erc721
+[COMMIT] add type in tx config
+[COMMIT] add getReceipt, getTxHash in contract write result
+[COMMIT] do not convert chainId to hex
+[COMMIT] Merge branch 'ug-feat_v3' of https://github.com/ujjwalguptaofficial/matic.js into ug-feat_v3
+[COMMIT] use baseToken in `isDeposited`
+[COMMIT] move web3client to utils
+[COMMIT] move chainId calc to promise.all
+[COMMIT] rm async from create transaction config
+[COMMIT] rm async
+[COMMIT] rm async and use promise
+[COMMIT] rm async and use promise
+[COMMIT] implement isBN in utils
+[COMMIT] add abstract for BaseBigNumber
+[COMMIT] rename  ITransactionConfig -> ITransactionRequestConfig
+[COMMIT] rm BN and use from web3 plugin
+[COMMIT] uninstall bn.js
+[COMMIT] convert rootBlockInfo.end, start to string
+[COMMIT] fix: fast exit examples and mumbai string in matic.js
+[COMMIT] upd: readme and matic.js package in example
+[COMMIT] Merge pull request #3 from nitinmittal23/ug-feat_v3
+[COMMIT] use ethers for testing
+[COMMIT] rm gasPrice calc
+[COMMIT] rm gasPrice check
+[COMMIT] fix issue with getBlockNumber using api
+[COMMIT] implement transaction write result
+[COMMIT] pass config in init
+[COMMIT] change erc20token address for test
+[COMMIT] Merge branch 'v3' into ug-feat_v3
+[COMMIT] Merge pull request #252 from ujjwalguptaofficial/ug-feat_v3
+[COMMIT] Merge branch 'v3'
+[COMMIT] release v - 3.0.0
+[PULL REQUEST] deposit and withdraw methods to interact with matic network
+[ISSUE] Version 1.0.0-beta.1
+[PULL REQUEST] fix: upgrade devDeps to fix vulnerabilities
+[PULL REQUEST] DRAFT: v3 changes
+    
+
+GENERATED RELEASE NOTES:
+- Added:
+  - Support for `web3.js` and `etherjs`
+  - ERC20 deposit, approve, transfer, withdraw methods
+  - ERC721 safeDepositERC721(), tokenOfOwnerByIndex(), getAllTokens(), getBalance()
+  - Plasma ERC20 and ERC721 implementations
+  - EIP-1559 support
+
+- Changed:
+  - Refactored client configuration interface
+  - Moved `abstract` class to a dedicated folder
+  - Updated examples with the latest version of `maticjs`
+  - Replaced `BN.js` with native Web3 BigNumber plugin
+  - Renamed `exitManager` to `exitUtil`
+
+- Fixed:
+  - Various issues in ERC20 and ERC721 methods, including balance, deposit, withdraw, and transfer
+  - Gas price calculation and configuration issues
+  - Proof building and exit manager functionality
+
+- Removed:
+  - Unused packages and folders
+  - Console logging in favor of a logger implementation
+
+EVALUATION:
+
+COVERAGE:
+bleu4: 0.18
+rougeL: 0.18
+meteor: 0.18
+
+HALLUCINATION RATE:
+bleu4: 0.69
+rougeL: 0.66
+meteor: 0.72

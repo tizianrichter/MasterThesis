@@ -1,0 +1,268 @@
+Logging to: logs\aflplusplus\aflplusplus\qwen2.5_7b-instruct\4.04c_to_4.05c_20260310_194710.txt
+
+
+================================================================================
+Running pipeline for aflplusplus/aflplusplus 4.04c → 4.05c
+================================================================================
+
+repo_owner                = aflplusplus
+repo_name                 = aflplusplus
+v_source                  = 4.04c
+v_target                  = 4.05c
+project_context           = 
+current_llm_model         = qwen2.5:7b-instruct
+OLLAMA_NUM_THREADS        = 8
+
+PROMPT:
+
+    You are an expert software technical writer.
+
+    TASK:
+    Generate high-quality release notes for a software release.
+
+    GOALS:
+    - Summarize user-relevant changes
+    - Abstract away low-level implementation details
+    - Avoid redundancy
+    - Use clear, concise language
+
+    TARGET AUDIENCE:
+    End users with technical background.
+
+    GROUNDING RULES (IMPORTANT):
+    - Use ONLY the information explicitly provided in the input data.
+    - Do NOT invent, assume, or infer changes that are not present.
+    - If no information supports a section, OMIT the section entirely.
+
+    OUTPUT FORMAT:
+    - Use Markdown
+    - Include ONLY these sections if relevant:
+      - Added
+      - Changed
+      - Fixed
+      - Removed
+      - Security
+    - Do NOT include introductions, conclusions, titles, or version numbers
+    - Output ONLY the release notes content
+
+    PROJECT CONTEXT:
+    
+
+    INPUT DATA:
+    The software version change is from **4.04c** to **4.05c**.
+    The following items describe changes between these two versions.
+    They may include commits, issues, and pull requests.
+    Do NOT list them verbatim.
+
+    NOTE:
+    - Commit messages and pull requests may refer to the same change. Treat duplicates as a single change.
+    - If a change was reverted within this release, do NOT list it unless the revert itself is user-relevant.
+
+    CHANGES:
+    [COMMIT] v4.05a init
+[COMMIT] 4.05a init fix
+[COMMIT] Updates following FRIDA API changes
+[COMMIT] ARM branch suppression
+[COMMIT] Bump FRIDA version
+[COMMIT] Fixes for x64
+[COMMIT] Bump to FRIDA 16.0.1
+[COMMIT] Merge pull request #1554 from WorksButNotTested/be8
+[COMMIT] Merge pull request #1553 from AFLplusplus/dev
+[COMMIT] Fix exit_on_time (#1555)
+[COMMIT] update qemuafl
+[COMMIT] Fix afl-showmap usage output (#1560)
+[COMMIT] nits
+[COMMIT] nits
+[COMMIT] nits
+[COMMIT] nits
+[COMMIT] Fix -rpath argument
+[COMMIT] Merge pull request #1562 from edmcman/dev
+[COMMIT] Fix child reaping on fuzzer termination
+[COMMIT] Add AFL_FORK_SERVER_KILL_SIGNAL environment variable.
+[COMMIT] AFL_FORK_SERVER_KILL_SIGNAL backwards compatiblity
+[COMMIT] Update usage messages
+[COMMIT] Merge pull request #1563 from nbars/stable
+[COMMIT] changelog update
+[COMMIT] Merge pull request #1561 from AFLplusplus/dev
+[COMMIT] fix usecase
+[COMMIT] Merge pull request #1568 from AFLplusplus/dev
+[COMMIT] Fix -t none in afl-showmap
+[COMMIT] Add braces
+[COMMIT] fix fork server kill signals for qemu, unicorn and nyx mode
+[COMMIT] nits
+[COMMIT] fix
+[COMMIT] Merge pull request #1573 from AFLplusplus/dev
+[COMMIT] add env
+[COMMIT] update unicorn
+[COMMIT] remove python2 reference
+[COMMIT] Use a long timeout instead of 0 for afl-showmap -t none
+[COMMIT] Merge pull request #1570 from edmcman/showmap-timeout
+[COMMIT] warn for -t none
+[COMMIT] Always enable persistent mode, no env/bincheck needed
+[COMMIT] fmt
+[COMMIT] Didn't mean to change that
+[COMMIT] try llvm 16 fix
+[COMMIT] more llvm16 fixes
+[COMMIT] Merge pull request #1576 from AFLplusplus/persistent_mode_always
+[COMMIT] nits
+[COMMIT] update for llvm16 compile instructions
+[COMMIT] llvm debug
+[COMMIT] afl_custom_fuzz_send added
+[COMMIT] Add option for random cmplog colorization
+[COMMIT] cmplog random replacement code formatting
+[COMMIT] Ensure random colorization always changes byte
+[COMMIT] custom_send example
+[COMMIT] fix python
+[COMMIT] fix python
+[COMMIT] fix warnings
+[COMMIT] Merge pull request #1580 from guyf2010/dev
+[COMMIT] update changelog
+[COMMIT] custom mutator fix
+[COMMIT] Merge pull request #1579 from AFLplusplus/dev
+[COMMIT] Fix argv-fuzz.
+[COMMIT] nits
+[COMMIT] Handle empty input.
+[COMMIT] Fix delim.
+[COMMIT] Handle read() error.
+[COMMIT] Fix cmplog block ID generation to use hashes rather than bit-shifts
+[COMMIT] Merge pull request #1584 from WorksButNotTested/cmplog
+[COMMIT] Exit on read error.
+[COMMIT] write queue statistics
+[COMMIT] Merge pull request #1583 from kobrineli/fix-argv-fuzz
+[COMMIT] Make env description extra clear
+[COMMIT] Add CASR as third party tool in docs.
+[COMMIT] casr-afl short description in fuzzing_in_depth.
+[COMMIT] Merge pull request #1588 from anfedotoff/dev
+[COMMIT] shorten text
+[COMMIT] crash fix for queue analysis feature
+[COMMIT] Fixes to make things easier to build for ARM
+[COMMIT] Merge pull request #1593 from WorksButNotTested/arm
+[COMMIT] Update README.md
+[COMMIT] Merge pull request #1596 from a-shvedov/patch-1
+[COMMIT] Bump FRIDA version
+[COMMIT] Fix branch suppression for ARM64
+[COMMIT] Merge pull request #1598 from WorksButNotTested/arm64
+[COMMIT] update qemuafl
+[COMMIT] fix warning
+[COMMIT] Silent more deprecation warning for clang 15 and onwards
+[COMMIT] Merge pull request #1601 from devnexen/silent_more_clang15_warnings
+[COMMIT] add cmplog envs
+[COMMIT] code format
+[COMMIT] fix Solaris/Illumos build
+[COMMIT] Merge pull request #1603 from devnexen/solaris_fuzz_run_fix
+[COMMIT] fix fork server timeout in afl-showmap
+[COMMIT] hide queue introspection behind define
+[COMMIT] Merge pull request #1592 from AFLplusplus/dev
+[COMMIT] afl-untracer freebsd 13.1 and above update.
+[COMMIT] Merge pull request #1606 from devnexen/afl_untracer_fbsd_upd
+[COMMIT] make CI green
+[COMMIT] argv fuzz persistent
+[COMMIT] makefile update
+[COMMIT] Merge branch 'AFLplusplus:stable' into argv-persistent-fuzzing
+[COMMIT] makefile update
+[COMMIT] Merge branch 'argv-persistent-fuzzing' of github.com:ahpaleus/AFLplusplus into argv-persistent-fuzzing
+[COMMIT] makefile update
+[COMMIT] makefile update
+[COMMIT] makefile update
+[COMMIT] update
+[COMMIT] cleanup
+[COMMIT] cleanup
+[COMMIT] readme update
+[COMMIT] update
+[COMMIT] minor changes
+[COMMIT] makefile update
+[COMMIT] makefile update
+[COMMIT] makefile update
+[COMMIT] makefile update
+[COMMIT] makefile update
+[COMMIT] makefile update
+[COMMIT] makefile update
+[COMMIT] readme cleanup
+[COMMIT] readme update
+[COMMIT] makefile cleanup
+[COMMIT] undo custom-format
+[COMMIT] Removed a modified file from pr
+[COMMIT] clang-format pip
+[COMMIT] prevent weighting < 1
+[COMMIT] Merge pull request #1607 from ahpaleus/argv-persistent-fuzzing
+[COMMIT] fix makefile typo
+[COMMIT] Merge pull request #1608 from ahpaleus/custom-format-pip
+[COMMIT] welcome 2023
+[COMMIT] try afl-showmap fix for qemu
+[COMMIT] fix
+[COMMIT] code format
+[COMMIT] Fix automatic unicornafl bindings install for python
+[COMMIT] Add pip to docker
+[COMMIT] 4.05c release
+[COMMIT] Update LibAFL custom mutator to latest
+[COMMIT] LibAFL custom mutator: unused variables with underscores
+[COMMIT] Updated rust custom mutator bindgen, fixed clippy lints
+[COMMIT] add update info to changelog
+[COMMIT] rust custom mutator: mark external fns unsafe
+[COMMIT] Merge pull request #1610 from AFLplusplus/dev
+[PULL REQUEST] 4.05a init
+[PULL REQUEST] Be8
+[PULL REQUEST] Fix exit_on_time.
+[PULL REQUEST] Fix afl-showmap usage
+[PULL REQUEST] push to stable
+[PULL REQUEST] Fix -rpath argument
+[PULL REQUEST] Fix child reaping on fuzzer termination
+[PULL REQUEST] fix usecase
+[PULL REQUEST] Fix -t none in afl-showmap
+[PULL REQUEST] push to stable
+[PULL REQUEST] Persistent mode always
+[PULL REQUEST] push to stable
+[PULL REQUEST] Add option for random cmplog colorization
+[PULL REQUEST] Fix argv-fuzz.
+[PULL REQUEST] Fix cmplog block ID generation to use hashes rather than bit-shifts
+[PULL REQUEST] Add CASR as third party tool in docs.
+[PULL REQUEST] Dev
+[PULL REQUEST] Fixes to make things easier to build for ARM
+[PULL REQUEST] Update README.md
+[PULL REQUEST] Arm64
+[PULL REQUEST] Silent more deprecation warning for clang 15 and onwards
+[PULL REQUEST] fix Solaris/Illumos build
+[PULL REQUEST] afl-untracer freebsd 13.1 and above update.
+[PULL REQUEST] Argv_fuzz feature persistent fuzzing + cleanup
+[PULL REQUEST] Support for clang-format from pip in the .custom-format.py
+[PULL REQUEST] push to stable
+    
+
+GENERATED RELEASE NOTES:
+- Added:
+  - `AFL_FORK_SERVER_KILL_SIGNAL` environment variable
+  - Option for random cmplog colorization
+
+- Changed:
+  - Updated FRIDA version to 16.0.1
+  - Fixed exit on time functionality
+  - Improved AFL_SHOWMAP usage output
+  - Enhanced persistent mode always enabled
+  - Simplified build process for ARM and ARM64 architectures
+  - Added CASR as a third-party tool in documentation
+  - Updated LibAFL custom mutator to the latest version
+
+- Fixed:
+  - Issues with x64 architecture
+  - Child reaping on fuzzer termination
+  - Use case fix
+  - `-t none` functionality for AFL_SHOWMAP
+  - Read error handling
+  - Queue analysis feature crash fix
+  - Automatic unicornafl bindings install for Python
+  - Solaris/Illumos build warnings
+
+- Removed:
+  - Python2 reference
+
+EVALUATION:
+
+COVERAGE:
+bleu4: 0.13
+rougeL: 0.23
+meteor: 0.15
+
+HALLUCINATION RATE:
+bleu4: 0.75
+rougeL: 0.66
+meteor: 0.75

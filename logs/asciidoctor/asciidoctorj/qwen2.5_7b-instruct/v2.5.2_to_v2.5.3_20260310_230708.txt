@@ -1,0 +1,166 @@
+Logging to: logs\asciidoctor\asciidoctorj\qwen2.5_7b-instruct\v2.5.2_to_v2.5.3_20260310_230708.txt
+
+
+================================================================================
+Running pipeline for asciidoctor/asciidoctorj v2.5.2 → v2.5.3
+================================================================================
+
+repo_owner                = asciidoctor
+repo_name                 = asciidoctorj
+v_source                  = v2.5.2
+v_target                  = v2.5.3
+project_context           = 
+current_llm_model         = qwen2.5:7b-instruct
+OLLAMA_NUM_THREADS        = 8
+
+PROMPT:
+
+    You are an expert software technical writer.
+
+    TASK:
+    Generate high-quality release notes for a software release.
+
+    GOALS:
+    - Summarize user-relevant changes
+    - Abstract away low-level implementation details
+    - Avoid redundancy
+    - Use clear, concise language
+
+    TARGET AUDIENCE:
+    End users with technical background.
+
+    GROUNDING RULES (IMPORTANT):
+    - Use ONLY the information explicitly provided in the input data.
+    - Do NOT invent, assume, or infer changes that are not present.
+    - If no information supports a section, OMIT the section entirely.
+
+    OUTPUT FORMAT:
+    - Use Markdown
+    - Include ONLY these sections if relevant:
+      - Added
+      - Changed
+      - Fixed
+      - Removed
+      - Security
+    - Do NOT include introductions, conclusions, titles, or version numbers
+    - Output ONLY the release notes content
+
+    PROJECT CONTEXT:
+    
+
+    INPUT DATA:
+    The software version change is from **v2.5.2** to **v2.5.3**.
+    The following items describe changes between these two versions.
+    They may include commits, issues, and pull requests.
+    Do NOT list them verbatim.
+
+    NOTE:
+    - Commit messages and pull requests may refer to the same change. Treat duplicates as a single change.
+    - If a change was reverted within this release, do NOT list it unless the revert itself is user-relevant.
+
+    CHANGES:
+    [COMMIT] Prepare next release
+[COMMIT] Add Java17 to gh-actions
+[COMMIT] Bump Gradle to v7.2
+[COMMIT] Merge pull request #1055 from abelsromero/support-java-17
+[COMMIT] CI pipeline fixes
+[COMMIT] Merge pull request #1056 from abelsromero/ci-fixes
+[COMMIT] Add test-asciidoctor-upstream job to pipeline
+[COMMIT] Merge pull request #1057 from abelsromero/display-upstream-test-in-actions
+[COMMIT] change default branch name for core in test upstream script
+[COMMIT] Merge pull request #1059 from mojavelinux/change-default-branch-name-for-core
+[COMMIT] Fix test-asciidoctor-upstream.sh path in 'Build Upstream'
+[COMMIT] Merge pull request #1060 from abelsromero/fix-upstream-build-pipeline
+[COMMIT] Fixes #1061. Clarify default logging to JUL
+[COMMIT] Fixes #1062. Update release versions in docs
+[COMMIT] Fixes #1065. Upgrade asciidoctorj-diagram
+[COMMIT] Add link to issue
+[COMMIT] Merge pull request #1066 from robertpanzer/update-asciidoctorj-diagram
+[COMMIT] Modernize CLI classes
+[COMMIT] Merge pull request #1063 from robertpanzer/docs
+[COMMIT] Merge pull request #1067 from abelsromero/modernize-cli
+[COMMIT] Fixes #1068. Clarify execution order of extensions
+[COMMIT] Fix double space
+[COMMIT] Fix type
+[COMMIT] Clarify that BlockMacro- and BlockProcessors are called in the same stage
+[COMMIT] Fix example on Logs Handling API documentation
+[COMMIT] Merge pull request #1070 from hcadavid/hcadavid-patch-1
+[COMMIT] Try to clarify extension order after testing.
+[COMMIT] Add documentation for logging from extensions
+[COMMIT] Implement review feedback.
+[COMMIT] Implement review feedback.
+[COMMIT] Mention that converters can also log
+[COMMIT] Merge pull request #1071 from robertpanzer/extension-logging-docs
+[COMMIT] Adding docs for accessing named and positional attributes in BlockProcessors
+[COMMIT] Adding docs for Inline Macro Processor positional attributes
+[COMMIT] Fix test error
+[COMMIT] Adding docs for Block Macro Processor positional attributes
+[COMMIT] Implement review feedback
+[COMMIT] Merge pull request #1069 from robertpanzer/fix/1068
+[COMMIT] Use symlinks to make tests available to docs instead of copying
+[COMMIT] Upgrade test dependencies on commons-io and jsoup
+[COMMIT] Upgrade to asciidoctorj-pdf 1.6.2
+[COMMIT] Merge pull request #1073 from robertpanzer/upgrade-pdf
+[COMMIT] Merge pull request #1072 from asciidoctor/docs-extension-attributes
+[COMMIT] Upgrade to asciidoctor 2.0.17
+[COMMIT] add explicit dependency after Gradle complained
+[COMMIT] Fix usage of TemporaryFolder in tests to avoid AccessDeniedExceptions
+[COMMIT] Merge pull request #1074 from robertpanzer/upgrade-asciidoctor-2.0.17
+[COMMIT] Merge pull request #1076 from ahus1/fix-gradle-warning-undeclared-dependency
+[COMMIT] Release 2.5.3
+[PULL REQUEST] Add Java17 to gh-actions
+[PULL REQUEST] Fixes for CI pipelines
+[PULL REQUEST] Display upstream test in actions
+[PULL REQUEST] change default branch name for core in test upstream script
+[PULL REQUEST] Fix test-asciidoctor-upstream.sh path in 'Build Upstream'
+[ISSUE] Consider adding some details about logging behavior
+[ISSUE] Consider removing maven versions from the doc
+[PULL REQUEST] Clarify default logging behavior and update released versions in docs
+[ISSUE] Test do not run in IntelliJ
+[PULL REQUEST] Fixes #1065. Upgrade asciidoctorj-diagram
+[PULL REQUEST] Modernize cli
+[ISSUE] Description of conversion process
+[PULL REQUEST] Fixes #1068. Clarify execution order of extensions
+[PULL REQUEST] Fix example on Logs Handling API documentation
+[PULL REQUEST] Add documentation for logging from extensions
+[PULL REQUEST] Adding docs for accessing named and positional attributes in BlockPro…
+[PULL REQUEST] Upgrade to asciidoctorj-pdf 1.6.2
+[PULL REQUEST] Upgrade to asciidoctor 2.0.17
+[PULL REQUEST] add explicit dependency after Gradle complained
+    
+
+GENERATED RELEASE NOTES:
+- Added:
+  - Support for Java 17 in CI pipelines
+
+- Changed:
+  - Bumped Gradle version to v7.2
+  - Modernized CLI classes
+  - Updated asciidoctorj-diagram and asciidoctorj-pdf dependencies
+  - Upgraded to asciidoctor 2.0.17
+  - Clarified default logging behavior in documentation
+  - Improved extension execution order documentation
+  - Added details on accessing named and positional attributes in BlockProcessors, Inline Macro Processors, and Block Macro Processors
+
+- Fixed:
+  - Test errors and double spaces
+  - CI pipeline issues
+  - Execution example clarifications for Logs Handling API documentation
+  - Access denied exceptions in tests
+  - Maven version removal from docs
+  - IntelliJ test execution issues
+
+- Removed:
+  - None
+
+EVALUATION:
+
+COVERAGE:
+bleu4: 0.10
+rougeL: 0.14
+meteor: 0.10
+
+HALLUCINATION RATE:
+bleu4: 0.80
+rougeL: 0.69
+meteor: 0.80

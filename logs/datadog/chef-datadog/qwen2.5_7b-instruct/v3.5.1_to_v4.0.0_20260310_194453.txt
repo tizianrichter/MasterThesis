@@ -1,0 +1,163 @@
+Logging to: logs\datadog\chef-datadog\qwen2.5_7b-instruct\v3.5.1_to_v4.0.0_20260310_194453.txt
+
+
+================================================================================
+Running pipeline for datadog/chef-datadog v3.5.1 → v4.0.0
+================================================================================
+
+repo_owner                = datadog
+repo_name                 = chef-datadog
+v_source                  = v3.5.1
+v_target                  = v4.0.0
+project_context           = 
+current_llm_model         = qwen2.5:7b-instruct
+OLLAMA_NUM_THREADS        = 8
+
+PROMPT:
+
+    You are an expert software technical writer.
+
+    TASK:
+    Generate high-quality release notes for a software release.
+
+    GOALS:
+    - Summarize user-relevant changes
+    - Abstract away low-level implementation details
+    - Avoid redundancy
+    - Use clear, concise language
+
+    TARGET AUDIENCE:
+    End users with technical background.
+
+    GROUNDING RULES (IMPORTANT):
+    - Use ONLY the information explicitly provided in the input data.
+    - Do NOT invent, assume, or infer changes that are not present.
+    - If no information supports a section, OMIT the section entirely.
+
+    OUTPUT FORMAT:
+    - Use Markdown
+    - Include ONLY these sections if relevant:
+      - Added
+      - Changed
+      - Fixed
+      - Removed
+      - Security
+    - Do NOT include introductions, conclusions, titles, or version numbers
+    - Output ONLY the release notes content
+
+    PROJECT CONTEXT:
+    
+
+    INPUT DATA:
+    The software version change is from **v3.5.1** to **v4.0.0**.
+    The following items describe changes between these two versions.
+    They may include commits, issues, and pull requests.
+    Do NOT list them verbatim.
+
+    NOTE:
+    - Commit messages and pull requests may refer to the same change. Treat duplicates as a single change.
+    - If a change was reverted within this release, do NOT list it unless the revert itself is user-relevant.
+
+    CHANGES:
+    [COMMIT] Simplify assignment
+[COMMIT] Refactor to remove agent version-specific variables
+[COMMIT] Test installing latest
+[COMMIT] Added warning about removed field
+[COMMIT] Add support for agent 7
+[COMMIT] Updated readme
+[COMMIT] Bump version
+[COMMIT] Coding style
+[COMMIT] Better warning
+[COMMIT] Fix URI.join not working if uri parts don't end in /
+[COMMIT] Make agent 7 default
+[COMMIT] Add repo only for 7
+[COMMIT] Make config_dir and service_name not configurable
+[COMMIT] Updated README to include upgrade instructions
+[COMMIT] Apply suggestions from code review
+[COMMIT] Oops
+[COMMIT] Bump
+[COMMIT] Changes as per code review
+[COMMIT] Warn about more deprecated methods
+[COMMIT] Fix upgrade instructions
+[COMMIT] Fully explain changes to yum urls.
+[COMMIT] Add a setting to disable writing system-probe.yaml
+[COMMIT] Bump version
+[COMMIT] Update attributes/default.rb
+[COMMIT] Merge pull request #648 from DataDog/albertvaka/system-probe-manage-setting
+[COMMIT] Better explain yumrepo option
+[COMMIT] [windows] try to make safer against 6.14.x apocalypse
+[COMMIT] [metadata] bump version to 3.99.3
+[COMMIT] [windows] indentation fix
+[COMMIT] [windows] re-order powershell script
+[COMMIT] [windows] multiple fixes
+[COMMIT] [windows] better raise error message
+[COMMIT] [windows] fix: use stable PS script
+[COMMIT] [windows] no install if bad hashsum
+[COMMIT] Windows hash check style fixes so it passes linter
+[COMMIT] Use yumrepo from user as-is, default to our repo
+[COMMIT] Fix missing yum_protocol variable in default attributes file
+[COMMIT] Linter fix
+[COMMIT] Do not fail calculating the checksum if the file doesn't exist
+[COMMIT] We no longer trigger the removal directly
+[COMMIT] Merge remote-tracking branch 'origin/master' into albertvaka/4.0-refactor
+[COMMIT] Bump version after merging master in
+[COMMIT] Install only the new RPM key for Agent 7
+[COMMIT] Fixed tests, added A7 test
+[COMMIT] Bump version
+[COMMIT] Merge remote-tracking branch 'origin/master' into albertvaka/4.0-refactor
+[COMMIT] Reorder defaults
+[COMMIT] Autodetect agent_major_version from agent_version
+[COMMIT] Merge pull request #665 from DataDog/albertvaka/autodetect-major-version
+[COMMIT] Bump version
+[COMMIT] Coding style
+[COMMIT] Fill back the default into the node attributes
+[COMMIT] Added 4.0 changelog
+[COMMIT] Merge remote-tracking branch 'origin/master' into albertvaka/4.0-refactor
+[COMMIT] Bump version
+[COMMIT] Changes as per CR
+[COMMIT] Create .d directory if it doesn't exist
+[COMMIT] Bump version
+[COMMIT] Merge branch 'master' into albertvaka/4.0-refactor
+[COMMIT] Release 4.0.0
+[COMMIT] Merge pull request #646 from DataDog/albertvaka/4.0-refactor
+[COMMIT] Add temporary gemfile
+[PULL REQUEST] Agent 7 support
+[PULL REQUEST] Add a setting to disable writing system-probe.yaml
+[PULL REQUEST] Autodetect agent_major_version from agent_version
+    
+
+GENERATED RELEASE NOTES:
+- **Added**
+  - Support for Agent 7
+  - Setting to disable writing `system-probe.yaml`
+  - Temporary Gemfile
+
+- **Changed**
+  - Defaulted Agent 7 as the latest version
+  - Improved warning messages and deprecated method warnings
+  - Updated README to include upgrade instructions and fully explain Yum URLs
+  - Autodetected `agent_major_version` from `agent_version`
+  - Reordered default configurations and settings
+  - Made `config_dir` and `service_name` non-configurable
+
+- **Fixed**
+  - URI joining issue when parts don't end with a slash
+  - Tests, including adding tests for Agent 7
+  - Windows-specific fixes, including safer handling against potential issues, hash checks, and script ordering
+  - Missing Yum protocol variable in default attributes file
+  - Linter and coding style improvements
+
+- **Removed**
+  - Direct removal of deprecated fields (warned about instead)
+
+EVALUATION:
+
+COVERAGE:
+bleu4: 0.17
+rougeL: 0.23
+meteor: 0.17
+
+HALLUCINATION RATE:
+bleu4: 0.59
+rougeL: 0.59
+meteor: 0.59

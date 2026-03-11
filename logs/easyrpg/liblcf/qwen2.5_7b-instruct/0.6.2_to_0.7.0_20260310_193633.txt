@@ -1,0 +1,368 @@
+Logging to: logs\easyrpg\liblcf\qwen2.5_7b-instruct\0.6.2_to_0.7.0_20260310_193633.txt
+
+
+================================================================================
+Running pipeline for easyrpg/liblcf 0.6.2 → 0.7.0
+================================================================================
+
+repo_owner                = easyrpg
+repo_name                 = liblcf
+v_source                  = 0.6.2
+v_target                  = 0.7.0
+project_context           = 
+current_llm_model         = qwen2.5:7b-instruct
+OLLAMA_NUM_THREADS        = 8
+
+PROMPT:
+
+    You are an expert software technical writer.
+
+    TASK:
+    Generate high-quality release notes for a software release.
+
+    GOALS:
+    - Summarize user-relevant changes
+    - Abstract away low-level implementation details
+    - Avoid redundancy
+    - Use clear, concise language
+
+    TARGET AUDIENCE:
+    End users with technical background.
+
+    GROUNDING RULES (IMPORTANT):
+    - Use ONLY the information explicitly provided in the input data.
+    - Do NOT invent, assume, or infer changes that are not present.
+    - If no information supports a section, OMIT the section entirely.
+
+    OUTPUT FORMAT:
+    - Use Markdown
+    - Include ONLY these sections if relevant:
+      - Added
+      - Changed
+      - Fixed
+      - Removed
+      - Security
+    - Do NOT include introductions, conclusions, titles, or version numbers
+    - Output ONLY the release notes content
+
+    PROJECT CONTEXT:
+    
+
+    INPUT DATA:
+    The software version change is from **0.6.2** to **0.7.0**.
+    The following items describe changes between these two versions.
+    They may include commits, issues, and pull requests.
+    Do NOT list them verbatim.
+
+    NOTE:
+    - Commit messages and pull requests may refer to the same change. Treat duplicates as a single change.
+    - If a change was reverted within this release, do NOT list it unless the revert itself is user-relevant.
+
+    CHANGES:
+    [COMMIT] Enable the GNU extensions
+[COMMIT] Merge pull request #366 from BSzili/master
+[COMMIT] Add lcf namespace
+[COMMIT] C++14 fixes
+[COMMIT] Move public lcf headers into lcf/ subdirectory
+[COMMIT] Move auto-generated chunk headers to lcf namespace / subdir
+[COMMIT] Move generated rpg_ headers into lcf subdir
+[COMMIT] Liblcf installation fixes for autotools and cmake
+[COMMIT] Streamline config.h between cmake and autotools
+[COMMIT] Fix autoheader failure on missing autogen/ subdir
+[COMMIT] Rename namespace ::RPG to ::rpg
+[COMMIT] Move ::rpg -> ::lcf::rpg
+[COMMIT] Rename lcf/rpg_*.h -> lcf/rpg/*.h
+[COMMIT] Make EventCommand::Code and MoveCommand::Code enum class
+[COMMIT] Remove lcf/command_codes.h
+[COMMIT] Rename lcf/lcf_saveopt -> lcf/saveopt
+[COMMIT] move filetype reader and chunks headers to subdirs
+[COMMIT] Fix header file subdirectory installation
+[COMMIT] Make skills_size a count field
+[COMMIT] Improve third party library detection and config header
+[COMMIT] Cleanup cmake header management
+[COMMIT] Autotools - config.h distribution fixes
+[COMMIT] LCF_SUPPORT_XML fix
+[COMMIT] Fix liblcf-config.make
+[COMMIT] Fix enum warning
+[COMMIT] Merge pull request #361 from fmatthew5876/lcfns
+[COMMIT] Migrate lcf2xml to liblcf
+[COMMIT] Merge pull request #369 from Ghabry/lcf-tools
+[COMMIT] Make rpg structs printable
+[COMMIT] Save compile time, but now we have lots of rpg cpp files
+[COMMIT] Make enums printable
+[COMMIT] Remove the old AmigaOS4 and MorphOS workarounds
+[COMMIT] Merge pull request #373 from BSzili/master
+[COMMIT] Add missing rpg_enums.cpp back to build system
+[COMMIT] Merge pull request #372 from fmatthew5876/printable
+[COMMIT] Fix gcc5 build
+[COMMIT] Merge pull request #375 from fmatthew5876/gcc5
+[COMMIT] Add editorconfig file to avoid whitespace problems
+[COMMIT] Fix IDE source grouping for new lcf structure
+[COMMIT] Restructure source listings for automatic fill-in
+[COMMIT] Update sources2buildsystem.pl
+[COMMIT] Merge pull request #377 from carstene1ns/bugfix/maintainer-tools
+[COMMIT] Merge pull request #376 from carstene1ns/feature/editorconfig
+[COMMIT] Generate lcf/rpg/fwd.h with all forward declarations
+[COMMIT] Add more ManiacPatch commands
+[COMMIT] Merge pull request #380 from fmatthew5876/fwd
+[COMMIT] Add StringView class
+[COMMIT] StringView: use string-view-lite implementation
+[COMMIT] Add lcf::Span
+[COMMIT] Merge pull request #381 from Ghabry/maniac-patch
+[COMMIT] Remove StringView free functions
+[COMMIT] Merge pull request #384 from fmatthew5876/span
+[COMMIT] Fix generated fwd.h header
+[COMMIT] Autotools: Add lcf2xml to .gitignore
+[COMMIT] Merge pull request #386 from fmatthew5876/fwdfix
+[COMMIT] Remove unessessary template arguments
+[COMMIT] ReaderUtil: support StringView
+[COMMIT] Add DBString class
+[COMMIT] DBString: Dedup strings
+[COMMIT] Remove hash table and use reference counting
+[COMMIT] DBString - remove ref counting
+[COMMIT] DBString - allow non-const operations
+[COMMIT] WriterLcf Decode - use StringView
+[COMMIT] Actor: use DBString
+[COMMIT] Skill - use DBString
+[COMMIT] Item: use DBString
+[COMMIT] Enemy: use DBString
+[COMMIT] Use DBString for troop name
+[COMMIT] Terrain use DBString
+[COMMIT] State - use DBString
+[COMMIT] Terms: Use DBString
+[COMMIT] Animation use DBString
+[COMMIT] Attribute use DBString
+[COMMIT] Chipset use DBString
+[COMMIT] Recode - use StringView
+[COMMIT] System - use StringView
+[COMMIT] Switch, Var, CommonEvent use DBString
+[COMMIT] Class, BattleCommand, BattlerAnim - Use DBString
+[COMMIT] Chipset name use DBString
+[COMMIT] MapInfo - use DBString
+[COMMIT] EventCommand use DBString
+[COMMIT] MapInfo - use DBString for background name
+[COMMIT] Map structures - use DBString
+[COMMIT] MoveCommand - use DBString
+[COMMIT] ReaderLcf: optimize DBString reading
+[COMMIT] Remove some includes
+[COMMIT] Add DBArray
+[COMMIT] Add DBArray support to generate script
+[COMMIT] EventCommand: use DBArray
+[COMMIT] Add support for DBArray to parsing framework
+[COMMIT] SizeField - support multiple array types
+[COMMIT] Add Void Reader to reader_struct
+[COMMIT] Merge pull request #379 from fmatthew5876/string
+[COMMIT] Rename message_active -> event_message_active
+[COMMIT] Fix skills count field default
+[COMMIT] Add DBBitArray
+[COMMIT] Add DBBitArray to generator script
+[COMMIT] Add support for DBBitArray to reader struct + parsers
+[COMMIT] Use DBBitArray
+[COMMIT] Merge pull request #391 from fmatthew5876/msgb
+[COMMIT] Merge pull request #390 from fmatthew5876/bits
+[COMMIT] Merge pull request #387 from fdelapena/ignore-lcf2xml
+[COMMIT] Compiler Warning fixes
+[COMMIT] Merge pull request #393 from fmatthew5876/wfix
+[COMMIT] Add ForEachString function + lcfstrings example tool
+[COMMIT] Add Generated files
+[COMMIT] Merge pull request #394 from fmatthew5876/foreachstring
+[COMMIT] Force nonstd sting_view and span to fix C++17/20 interop
+[COMMIT] Fix invalid memory use bug in DBString
+[COMMIT] Merge pull request #400 from fmatthew5876/nonstd
+[COMMIT] make _empty_buf const instead of constexpr
+[COMMIT] Remove SaveSystem::Fixup and UnFixup
+[COMMIT] Generator script - support quoted fields + require python3
+[COMMIT] Remove SaveSystem::Setup()
+[COMMIT] Rename setup.csv -> functions.csv
+[COMMIT] Remove Init() and needs_ctor
+[COMMIT] fields.csv remove empty '' from string default values
+[COMMIT] Prevent lcf structs from ever having uninitialized values
+[COMMIT] SaveSystem: Initialize music and sounds with empty string
+[COMMIT] Update generator README
+[COMMIT] Merge pull request #396 from fmatthew5876/sysfix
+[COMMIT] Merge pull request #401 from Ghabry/dbarrayalloc
+[COMMIT] Add SaveActor::kEmptyName constant
+[COMMIT] SaveActor - initialize to empty name
+[COMMIT] Remove SaveActor Fixup and UnFixup
+[COMMIT] SaveActor: initialize equipped and battle_commands array
+[COMMIT] Remove SaveActor::Setup
+[COMMIT] Remove SaveInventory::Setup
+[COMMIT] Remove SaveMapEvent::Setup
+[COMMIT] Merge pull request #399 from fmatthew5876/actorfix
+[COMMIT] Remove SaveMapInfo::Fixup and LSD_Reader::ClearDefaults
+[COMMIT] Remove SaveMapInfo::Setup
+[COMMIT] Remove lcf::rpg::Save::Setup
+[COMMIT] Merge pull request #403 from fmatthew5876/mapfix
+[COMMIT] Remove lcf::Data from Actor::Setup
+[COMMIT] Move lcf::Data access out of parsing code
+[COMMIT] Remove lcf::Data from IsDefault()
+[COMMIT] Regression Fix: Map chipset default is 0
+[COMMIT] Merge pull request #405 from fmatthew5876/lcfdata
+[COMMIT] Merge pull request #408 from fmatthew5876/fixmapchip
+[COMMIT] Add missing and rename CBA chunks and structs
+[COMMIT] CBA: Add generated files
+[COMMIT] Fix BattlerAnimation::Speed enum values
+[COMMIT] Merge pull request #406 from fmatthew5876/pose
+[COMMIT] Fix some clang warnings
+[COMMIT] Merge pull request #410 from fmatthew5876/fixclang
+[COMMIT] Upgrade to doctest 2.4.1
+[COMMIT] Merge pull request #411 from fmatthew5876/doctest2.4.1
+[COMMIT] Remove all use of lcf::Data globals
+[COMMIT] Remove lcf::Data
+[COMMIT] Use an enum to dictate engine version when saving
+[COMMIT] Merge pull request #409 from fmatthew5876/nodata
+[COMMIT] Update ConfigureWindows to latest version (supports MSVC_RUNTIME_LIBRARY)
+[COMMIT] Disable benchmarks by default
+[COMMIT] CMake config file: Support both expat versions. Require C++14 support
+[COMMIT] Makefile: Add lcfstrings
+[COMMIT] CMake: Fix policy check
+[COMMIT] CMake: Rename all arguments and fail when the old are used
+[COMMIT] Merge pull request #397 from Ghabry/cmake
+[COMMIT] Make some hardcoded terms customizable
+[COMMIT] Add Terms::TermOrDefault
+[COMMIT] Merge pull request #414 from rueter37/custom-terms
+[COMMIT] CMake: target_compile_features is not supported for UNKNOWN IMPORTED targets. Workaround with set_target_property which does the same but has no sanity check...
+[COMMIT] Always dump the bytes when an unknown chunk is skipped. An unknown chunk is always a bug.
+[COMMIT] Add Maniac patch chunks
+[COMMIT] Maniac: Add generated data
+[COMMIT] Merge pull request #415 from Ghabry/cmake-3.8-fix
+[COMMIT] Merge pull request #417 from Ghabry/maniac-patch
+[COMMIT] Make headers private sources
+[COMMIT] Merge pull request #420 from carstene1ns/bugfix/private-sources
+[COMMIT] Make more hardcoded terms customizable
+[COMMIT] Merge pull request #419 from rueter37/custom-terms-2
+[COMMIT] Small cmake touch-up:
+[COMMIT] Add basic workflow on debian/ubuntu
+[COMMIT] Adapt sources2buildsystem.pl for third_party headers
+[COMMIT] Merge pull request #422 from carstene1ns/bugfix/old-cmake
+[COMMIT] Fix installation of lcf/config.h
+[COMMIT] Update copyright years
+[COMMIT] generator: Do not use deprecated np.str type
+[COMMIT] Merge pull request #423 from carstene1ns/bugfix/install-config
+[COMMIT] Rename AfterImage to Afterimage
+[COMMIT] Merge pull request #424 from Ghabry/cba-afterimage
+[COMMIT] Update IRC link
+[COMMIT] Merge pull request #428 from fdelapena/libera-chat
+[COMMIT] Hide diffs of generated files by default
+[COMMIT] Add custom game settings in the database
+[COMMIT] Change system option 201 to "Battle options"
+[COMMIT] Unify config generation logic
+[COMMIT] Remove deprecated CMake option handling
+[COMMIT] Remove the use of pkg-config in cmake config
+[COMMIT] Change keys in SaveEventExecState from bool to int because Maniac patch uses the higher bits for the mouse state
+[COMMIT] Merge pull request #432 from Ghabry/maniac-keyinput
+[COMMIT] Move option "Enable stat absorbing" to skills
+[COMMIT] Merge pull request #421 from rueter37/features
+[COMMIT] Merge pull request #431 from carstene1ns/bugfix/cmake-no-pkgconfig
+[COMMIT] SavePicture: Add chunks for Flip, Blend Mode and Fixed Angle
+[COMMIT] Move Load-Api to StringView
+[COMMIT] Merge pull request #434 from Ghabry/pic-chunks
+[COMMIT] Change DetectEncoding Api from stream to database.
+[COMMIT] maint: update span and doctest
+[COMMIT] Merge pull request #435 from Ghabry/encoding
+[COMMIT] Merge pull request #436 from carstene1ns/update/span
+[COMMIT] Release helper: Abort on error
+[COMMIT] Change version to 0.7.0
+[COMMIT] Readme: Improve 3rd party section wording
+[COMMIT] Merge pull request #437 from Ghabry/release/0.7.0
+[PULL REQUEST] Namespace and reorganize liblcf
+[PULL REQUEST] Enable the GNU extensions
+[PULL REQUEST] Migrate lcf2xml to liblcf
+[PULL REQUEST] Make rpg structs printable
+[PULL REQUEST] Amiga cleanup
+[PULL REQUEST] Fix gcc5 build
+[PULL REQUEST] Add editorconfig file to avoid whitespace problems
+[PULL REQUEST] Adapt sources2buildsystem.pl for new structure
+[PULL REQUEST] Optimize memory usage with DBString and DBArray
+[PULL REQUEST] Generate lcf/rpg/fwd.h with all forward declarations
+[PULL REQUEST] Add more ManiacPatch commands
+[PULL REQUEST] Add StringView and Span
+[PULL REQUEST] Fix generated fwd.h header
+[PULL REQUEST] Autotools: Add lcf2xml to .gitignore
+[PULL REQUEST] Optimize memory with DBBitArray
+[PULL REQUEST] Rename message_active -> event_message_active
+[PULL REQUEST] Compiler Warning fixes
+[PULL REQUEST] Add ForEachString
+[PULL REQUEST] Remove SaveSystem Setup and Fixup  + remove Init() functions + Generator improvements
+[PULL REQUEST] CMake: Fix expat, disable benchmarks
+[PULL REQUEST] Remove SaveActor Fixup And Setup
+[PULL REQUEST] Force nonstd string_view and span to fix C++17/20 interop
+[PULL REQUEST] make _empty_buf const instead of constexpr
+[PULL REQUEST] Remove SaveMapInfo Setup and Fixup
+[PULL REQUEST] Move lcf::Data out of parser implementations
+[PULL REQUEST] Rename and add missing CBA chunks / structs
+[PULL REQUEST] Regression Fix: Map chipset default is 0
+[PULL REQUEST] Remove lcf::Data
+[PULL REQUEST] Fix some clang warnings
+[PULL REQUEST] Upgrade to doctest 2.4.1
+[PULL REQUEST] Make some hardcoded terms customizable
+[PULL REQUEST] CMake 3.8: Fix liblcf-config.cmake
+[PULL REQUEST] Add Maniac patch chunks
+[PULL REQUEST] Make more hardcoded terms customizable
+[PULL REQUEST] Make headers private sources
+[PULL REQUEST] Add custom game settings in the database
+[PULL REQUEST] Support CMake 3.10-3.20
+[PULL REQUEST] Fix installation of lcf/config.h
+[PULL REQUEST] Rename AfterImage to Afterimage
+[PULL REQUEST] Update IRC network
+[PULL REQUEST] Remove the need for pkgconfig in cmake config
+[PULL REQUEST] Change keys in SaveEventExecState from bool to int for ManiacPatch
+[PULL REQUEST] SavePicture: Add chunks for Flip and Blend Mode
+[PULL REQUEST] Improve encoding detection
+[PULL REQUEST] maint: update span and doctest
+[PULL REQUEST] Release 0.7.0
+    
+
+GENERATED RELEASE NOTES:
+- **Added**
+  - `StringView` class
+  - `DBArray` support in parsing framework
+  - Support for `DBBitArray`
+  - Maniac patch chunks
+  - Customizable game settings in the database
+
+- **Changed**
+  - Renamed `message_active` to `event_message_active`
+  - Migrated `lcf2xml` to `liblcf`
+  - Restructured source listings and headers for automatic fill-in
+  - Updated third-party library detection and config header
+  - Changed system option 201 to "Battle options"
+  - Unified config generation logic
+  - Removed deprecated CMake option handling
+  - Disabled benchmarks by default in CMake
+  - Renamed `AfterImage` to `Afterimage`
+  - Updated IRC network link
+
+- **Removed**
+  - `lcf::Data` globals and related functions
+  - Use of `pkg-config` in CMake configuration
+  - `SaveSystem Setup` and `Fixup` functions for `SaveActor`, `SaveMapInfo`, and `lcf::rpg::Save`
+
+- **Optimizations**
+  - Optimized memory usage with `DBString` and `DBArray`
+  - Improved encoding detection in the database
+  - Fixed some Clang warnings
+
+- **Miscellaneous**
+  - Updated to doctest 2.4.1
+  - Changed version number to 0.7.0
+  - Improved wording in the README for third-party section
+  - Added `lcfstrings` target in Makefile
+  - Fixed installation of `lcf/config.h`
+  - Enabled GNU extensions
+  - Updated CMake policies and arguments
+  - Adapted `sources2buildsystem.pl` for new structure
+  - Removed hardcoded terms where possible
+  - Added support for CMake versions 3.10-3.20
+
+EVALUATION:
+
+COVERAGE:
+bleu4: 0.10
+rougeL: 0.16
+meteor: 0.10
+
+HALLUCINATION RATE:
+bleu4: 0.80
+rougeL: 0.69
+meteor: 0.80

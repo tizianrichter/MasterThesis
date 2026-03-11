@@ -1,0 +1,164 @@
+Logging to: logs\mortbopet\ripes\qwen2.5_7b-instruct\v2.2.4_to_v2.2.5_20260310_193357.txt
+
+
+================================================================================
+Running pipeline for mortbopet/ripes v2.2.4 → v2.2.5
+================================================================================
+
+repo_owner                = mortbopet
+repo_name                 = ripes
+v_source                  = v2.2.4
+v_target                  = v2.2.5
+project_context           = 
+current_llm_model         = qwen2.5:7b-instruct
+OLLAMA_NUM_THREADS        = 8
+
+PROMPT:
+
+    You are an expert software technical writer.
+
+    TASK:
+    Generate high-quality release notes for a software release.
+
+    GOALS:
+    - Summarize user-relevant changes
+    - Abstract away low-level implementation details
+    - Avoid redundancy
+    - Use clear, concise language
+
+    TARGET AUDIENCE:
+    End users with technical background.
+
+    GROUNDING RULES (IMPORTANT):
+    - Use ONLY the information explicitly provided in the input data.
+    - Do NOT invent, assume, or infer changes that are not present.
+    - If no information supports a section, OMIT the section entirely.
+
+    OUTPUT FORMAT:
+    - Use Markdown
+    - Include ONLY these sections if relevant:
+      - Added
+      - Changed
+      - Fixed
+      - Removed
+      - Security
+    - Do NOT include introductions, conclusions, titles, or version numbers
+    - Output ONLY the release notes content
+
+    PROJECT CONTEXT:
+    
+
+    INPUT DATA:
+    The software version change is from **v2.2.4** to **v2.2.5**.
+    The following items describe changes between these two versions.
+    They may include commits, issues, and pull requests.
+    Do NOT list them verbatim.
+
+    NOTE:
+    - Commit messages and pull requests may refer to the same change. Treat duplicates as a single change.
+    - If a change was reverted within this release, do NOT list it unless the revert itself is user-relevant.
+
+    CHANGES:
+    [COMMIT] fix offset of compressed intructions c.bnez and c.beqz
+[COMMIT] fix c.lwsp instruction uimm decoded value
+[COMMIT] added arguments decode tests to instructions c.lwsp c.bnez and c.beqz
+[COMMIT] Merge pull request #195 from lcgamboa/fix_cbnez
+[COMMIT] Add stdin reading assembly example
+[COMMIT] Abort system calls on reset
+[COMMIT] Format consoleReading example
+[COMMIT] Add missing timer reset in statusmanager
+[COMMIT] Disable other actions while autoclocking
+[COMMIT] Stop running processor if trying to exit program
+[COMMIT] Update README.md
+[COMMIT] Update README.md
+[COMMIT] Build and push docker image to DockerHub
+[COMMIT] Merge pull request #198 from matsievskiysv/master
+[COMMIT] Update docker-build.yml
+[COMMIT] Add docker-build.yml for building docker image on PRs
+[COMMIT] Rewrite line tokenizer
+[COMMIT] Add register column to syscall help window
+[COMMIT] Fix msvc warning
+[COMMIT] Improve assembler directives error messages
+[COMMIT] Fix \r issue is tst_riscv on Windows
+[COMMIT] Add support for local labels  #199 (#201)
+[COMMIT] Factor location tracking to separate class in assembler #200
+[COMMIT] Better assembler optionals
+[COMMIT] Reformat based on LLVM syntax
+[COMMIT] Add missing include and make MSVC and docker happy
+[COMMIT] Replace numStages with more elaborate processor structure info #203
+[COMMIT] Implement iterator interface for stages in ProcessorStructure #203
+[COMMIT] Update various stale comments
+[COMMIT] Initial commit for Ripes command line mode
+[COMMIT] Factor telemetry to separate class
+[COMMIT] Add pipeline diagram telemetry
+[COMMIT] Enable ISA extensions in CmdRunner
+[COMMIT] Add # instructions retired and register file telemetry
+[COMMIT] Delay PipelineTelemtry model construction to enable time
+[COMMIT] Add option for JSON formatted telemetry output
+[COMMIT] Spelling mistakes!
+[COMMIT] Add --timeout option to CLI
+[COMMIT] Rename "sh"/"cmd" => "cli"
+[COMMIT] Add timed status output in verbose mode in CLI
+[COMMIT] Move documentation to repository
+[COMMIT] Add docs on CLI
+[COMMIT] Telemetry -> Report in public facing docs
+[COMMIT] Minor CLI help tweaks
+[COMMIT] Fix broken links in README.md
+[COMMIT] Specialize register report in case of JSON output
+[COMMIT] Add register initialization option to commandline
+[COMMIT] Fix broken link in docs README (#208)
+[COMMIT] Fix stray negation
+[COMMIT] Fix broken link
+[COMMIT] Update VSRTL version, release notes
+[PULL REQUEST] Fix offset of compressed instructions c.bnez and c.beqz
+[PULL REQUEST] Add docker recipe
+[ISSUE] local labels not working ?
+[ISSUE] Simplify/unify classes in Assembler hierarchy
+[PULL REQUEST] Add support for local labels  #199
+[PULL REQUEST] Stall and Flush Counter (Initial Iteration)
+[PULL REQUEST] Fix broken link in docs
+    
+
+GENERATED RELEASE NOTES:
+- Added:
+  - Arguments decode tests to instructions `c.lwsp`, `c.bnez`, and `c.beqz`
+  - Support for local labels (`#199`)
+  - Register initialization option to commandline
+  - CLI timeout option
+  - JSON formatted telemetry output
+  - Documentation in repository
+  - Assembler register column in syscall help window
+
+- Changed:
+  - Renamed "sh"/"cmd" to "cli"
+  - Improved assembler directives error messages
+  - Replaced `numStages` with a more elaborate processor structure info (`#203`)
+  - Implemented iterator interface for stages in ProcessorStructure (`#203`)
+  - Updated README.md and fixed broken links
+  - Specialized register report based on output format
+  - Delayed PipelineTelemetry model construction to enable time-based reporting
+
+- Fixed:
+  - Offset of compressed instructions `c.bnez` and `c.beqz`
+  - `c.lwsp` instruction uimm decoded value issue
+  - \r issue in `tst_riscv` on Windows
+  - Stray negation bug
+  - Broken links in documentation
+
+- Removed:
+  - None
+
+- Security:
+  - None
+
+EVALUATION:
+
+COVERAGE:
+bleu4: 0.14
+rougeL: 0.11
+meteor: 0.09
+
+HALLUCINATION RATE:
+bleu4: 0.86
+rougeL: 0.71
+meteor: 0.76

@@ -1,0 +1,164 @@
+Logging to: logs\microsoft\vscode-azure-iot-toolkit\qwen2.5_7b-instruct\v2.15.0_to_v2.16.6_20260204_120050.txt
+
+
+================================================================================
+Running pipeline for microsoft/vscode-azure-iot-toolkit v2.15.0 → v2.16.6
+================================================================================
+
+repo_owner                = microsoft
+repo_name                 = vscode-azure-iot-toolkit
+v_source                  = v2.15.0
+v_target                  = v2.16.6
+project_context           = Azure IoT Tools for VS Code is an extension pack for Visual Studio Code that lets you get all you need for Azure IoT development with 1-click installation. Microsoft Azure IoT support for Visual Studio Code is provided through a rich set of extensions that make it easy to discover and interact with Azure IoT Hub that power your IoT Edge and device applications
+current_llm_model         = qwen2.5:7b-instruct
+OLLAMA_NUM_THREADS        = 8
+
+PROMPT:
+
+    You are an expert software technical writer.
+
+    TASK:
+    Generate high-quality release notes for a software release.
+
+    GOALS:
+    - Summarize user-relevant changes
+    - Abstract away low-level implementation details
+    - Avoid redundancy
+    - Use clear, concise language
+
+    TARGET AUDIENCE:
+    End users with technical background.
+
+    GROUNDING RULES (IMPORTANT):
+    - Use ONLY the information explicitly provided in the input data.
+    - Do NOT invent, assume, or infer changes that are not present.
+    - If no information supports a section, OMIT the section entirely.
+
+    OUTPUT FORMAT:
+    - Use Markdown
+    - Include ONLY these sections if relevant:
+      - Added
+      - Changed
+      - Fixed
+      - Removed
+      - Security
+    - Do NOT include introductions, conclusions, titles, or version numbers
+    - Output ONLY the release notes content
+
+    PROJECT CONTEXT:
+    Azure IoT Tools for VS Code is an extension pack for Visual Studio Code that lets you get all you need for Azure IoT development with 1-click installation. Microsoft Azure IoT support for Visual Studio Code is provided through a rich set of extensions that make it easy to discover and interact with Azure IoT Hub that power your IoT Edge and device applications
+
+    INPUT DATA:
+    The software version change is from **v2.15.0** to **v2.16.6**.
+    The following items describe changes between these two versions.
+    They may include commits, issues, and pull requests.
+    Do NOT list them verbatim.
+
+    NOTE:
+    - Commit messages and pull requests may refer to the same change. Treat duplicates as a single change.
+    - If a change was reverted within this release, do NOT list it unless the revert itself is user-relevant.
+
+    CHANGES:
+    [COMMIT] Include dummy json source code in order to fix handlebles vulnerability (#452)
+[COMMIT] Bump version to 2.16.0 (#455)
+[COMMIT] Bump acorn from 6.3.0 to 6.4.1 (#458)
+[COMMIT] Update third party notice (#462)
+[COMMIT] Bump version and update changelog (#463)
+[COMMIT] Fix distributed tracing issue (#464)
+[COMMIT] 2.16.1 (#465)
+[COMMIT] Bump https-proxy-agent from 2.2.2 to 2.2.4 (#467)
+[COMMIT] Fix #468: support monitoring Event Hub messages in different regions (#470)
+[COMMIT] Use new API to send error telemetry (#472)
+[COMMIT] Resolve #473: Adopt VS Code's 'asWebviewUri' API (#474)
+[COMMIT] 2.16.2-rc (#476)
+[COMMIT] Filter more errorProperties (#477)
+[COMMIT] 2.16.2 (#479)
+[COMMIT] Remove interfaces node
+[COMMIT] Fix linter issues
+[COMMIT] Merge pull request #485 from montgomp/remove-interfaces-node
+[COMMIT] Bump elliptic from 6.5.0 to 6.5.3 (#484)
+[COMMIT] Bump lodash from 4.17.15 to 4.17.19 (#483)
+[COMMIT] Added contentType and contentEncoding to simulator D2C messages.
+[COMMIT] Added contentType and contentEncoding to simulator D2C messages.
+[COMMIT] Added contentType and contentEncoding to simulator D2C messages.
+[COMMIT] Numerous packages for security updates
+[COMMIT] Add dom libraries for RequestInit
+[COMMIT] Try adding keytar to dev dependancies for linux build
+[COMMIT] Add libsecret-1-dev install to pre-installation for linux
+[COMMIT] PR feedback
+[COMMIT] Merge pull request #487 from montgomp/package-updates
+[COMMIT] Set version 2.16.3-rc
+[COMMIT] Merge branch 'master' into master
+[COMMIT] Merge pull request #486 from michielvanschaik/master
+[COMMIT] Merge branch 'master' into release_2.16.3-rc
+[COMMIT] Merge pull request #489 from montgomp/release_2.16.3-rc
+[COMMIT] Update changelog and version to 2.16.3 (#490)
+[COMMIT] Fix a bunch of Event Hub connection string changes (#492)
+[COMMIT] RC to fix Event Hub connectivity issues (#493)
+[COMMIT] Prep for release to marketplace (#494)
+[COMMIT] Bump node-fetch from 2.6.0 to 2.6.1
+[COMMIT] Merge pull request #496 from microsoft/dependabot/npm_and_yarn/node-fetch-2.6.1
+[COMMIT] Bump ini from 1.3.5 to 1.3.8
+[COMMIT] Merge pull request #504 from microsoft/dependabot/npm_and_yarn/ini-1.3.8
+[COMMIT] Bump axios from 0.19.2 to 0.21.1
+[COMMIT] Merge pull request #503 from microsoft/dependabot/npm_and_yarn/axios-0.21.1
+[COMMIT] RC to update package vulnerabilities (#505)
+[COMMIT] 2.16.5 release (#507)
+[COMMIT] Package vulnerability updates and 2.16.6 RC (#508)
+[COMMIT] Fix travis secret
+[COMMIT] Merge pull request #509 from c-ryan-k/travis-fix
+[COMMIT] Release v2.16.6 (#510)
+[PULL REQUEST] Include dummy json source code in order to fix handlebles vulnerability
+[PULL REQUEST] Bump version to 2.16.0
+[PULL REQUEST] Bump acorn from 6.3.0 to 6.4.1
+[PULL REQUEST] Update third party notice
+[PULL REQUEST] Bump version and update changelog for new release
+[PULL REQUEST] Fix distributed tracing issue
+[PULL REQUEST] 2.16.1
+[PULL REQUEST] Bump https-proxy-agent from 2.2.2 to 2.2.4
+[ISSUE] [EventHubMonitor] Error: The subscription '97393ea4-9a50-47a2-9583-xxxxxx' could not be found
+[PULL REQUEST] Fix #468: support monitoring Event Hub messages in different regions
+[PULL REQUEST] Use new API to send error telemetry
+[ISSUE] Adopt VS Code's 'asWebviewUri' API
+[PULL REQUEST] Resolve #473: Adopt VS Code's 'asWebviewUri' API
+[PULL REQUEST] 2.16.2-rc
+[PULL REQUEST] Filter more errorProperties
+[PULL REQUEST] 2.16.2
+[PULL REQUEST] Bump lodash from 4.17.15 to 4.17.19
+[PULL REQUEST] Bump elliptic from 6.5.0 to 6.5.3
+[PULL REQUEST] Remove interfaces node
+[PULL REQUEST] Added contentType and contentEncoding to simulator D2C messages.
+[PULL REQUEST] Numerous packages for security updates
+[PULL REQUEST] Set version 2.16.3-rc
+[PULL REQUEST] Update changelog and version to 2.16.3
+[PULL REQUEST] Fix a bunch of Event Hub connection string changes
+[PULL REQUEST] RC to fix Event Hub connectivity issues
+[PULL REQUEST] Prep for release to marketplace
+[PULL REQUEST] Bump node-fetch from 2.6.0 to 2.6.1
+[PULL REQUEST] Bump axios from 0.19.2 to 0.21.1
+[PULL REQUEST] Bump ini from 1.3.5 to 1.3.8
+[PULL REQUEST] RC to update package vulnerabilities
+[PULL REQUEST] 2.16.5 release
+[PULL REQUEST] Package vulnerability updates and 2.16.6 RC
+[PULL REQUEST] Travis pipeline update
+[PULL REQUEST] Release v2.16.6
+    
+
+RELEASE NOTES:
+- **Added**: Added `contentType` and `contentEncoding` to simulator Device-to-Cloud (D2C) messages.
+- **Changed**: Updated numerous packages for security improvements, including `acorn`, `elliptic`, `lodash`, `axios`, `ini`, and `node-fetch`.
+- **Fixed**: Resolved issues with Event Hub connectivity, distributed tracing, and telemetry error reporting. Fixed a subscription error in the Event Hub monitor.
+- **Removed**: Removed `interfaces` node from the project.
+- **Security**: Addressed security vulnerabilities by updating dependencies and adding necessary libraries for secure builds.
+
+EVALUATION:
+
+COVERAGE:
+bleu4: 0.70
+rougeL: 0.79
+meteor: 0.80
+
+HALLUCINATION RATE:
+bleu4: 0.00
+rougeL: 0.00
+meteor: 0.00

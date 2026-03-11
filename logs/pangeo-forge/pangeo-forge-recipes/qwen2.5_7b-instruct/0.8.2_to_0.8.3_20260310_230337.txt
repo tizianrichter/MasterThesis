@@ -1,0 +1,184 @@
+Logging to: logs\pangeo-forge\pangeo-forge-recipes\qwen2.5_7b-instruct\0.8.2_to_0.8.3_20260310_230337.txt
+
+
+================================================================================
+Running pipeline for pangeo-forge/pangeo-forge-recipes 0.8.2 → 0.8.3
+================================================================================
+
+repo_owner                = pangeo-forge
+repo_name                 = pangeo-forge-recipes
+v_source                  = 0.8.2
+v_target                  = 0.8.3
+project_context           = 
+current_llm_model         = qwen2.5:7b-instruct
+OLLAMA_NUM_THREADS        = 8
+
+PROMPT:
+
+    You are an expert software technical writer.
+
+    TASK:
+    Generate high-quality release notes for a software release.
+
+    GOALS:
+    - Summarize user-relevant changes
+    - Abstract away low-level implementation details
+    - Avoid redundancy
+    - Use clear, concise language
+
+    TARGET AUDIENCE:
+    End users with technical background.
+
+    GROUNDING RULES (IMPORTANT):
+    - Use ONLY the information explicitly provided in the input data.
+    - Do NOT invent, assume, or infer changes that are not present.
+    - If no information supports a section, OMIT the section entirely.
+
+    OUTPUT FORMAT:
+    - Use Markdown
+    - Include ONLY these sections if relevant:
+      - Added
+      - Changed
+      - Fixed
+      - Removed
+      - Security
+    - Do NOT include introductions, conclusions, titles, or version numbers
+    - Output ONLY the release notes content
+
+    PROJECT CONTEXT:
+    
+
+    INPUT DATA:
+    The software version change is from **0.8.2** to **0.8.3**.
+    The following items describe changes between these two versions.
+    They may include commits, issues, and pull requests.
+    Do NOT list them verbatim.
+
+    NOTE:
+    - Commit messages and pull requests may refer to the same change. Treat duplicates as a single change.
+    - If a change was reverted within this release, do NOT list it unless the revert itself is user-relevant.
+
+    CHANGES:
+    [COMMIT] Tutorial Part 1 Updates (#295)
+[COMMIT] Intro tutorial part2 (#293)
+[COMMIT] Add docs for installing pangeo_forge_recipes (#294)
+[COMMIT] Add API reference page (#303)
+[COMMIT] Homepage links (#304)
+[COMMIT] add ocg headers (#308)
+[COMMIT] fix ogp base url (#309)
+[COMMIT] pin doc requirements to experimental branch
+[COMMIT] Create intro tutorial part 3 (#307)
+[COMMIT] update about-pangeo-forge (#311)
+[COMMIT] Add feedback from Paige (#313)
+[COMMIT] add esa sss as example tutorial (#314)
+[COMMIT] remove osm duplicate tutorial (#317)
+[COMMIT] implement FilePattern.file_type
+[COMMIT] add descriptive file_type/engine errors
+[COMMIT] add deprecation warning for is_opendap
+[COMMIT] pruning logic requires args and attrs to match
+[COMMIT] add test_setting_file_types
+[COMMIT] tutorial notebook fixes
+[COMMIT] add kerchunk to upstream dev
+[COMMIT] mv OPENER_MAP to xarray_zarr.py
+[COMMIT] use regex matching for test_setting_file_types error
+[COMMIT] use kerchunk in ci envs
+[COMMIT] change 'fsspec_reference_maker' -> 'kerchunk'
+[COMMIT] move kerchunk back into pip deps
+[COMMIT] fix open_input_with_kerchunk kwarg in tests
+[COMMIT] install nbmake from feature branch for now
+[COMMIT] Merge pull request #324 from cisaacstern/kerchunk
+[COMMIT] merge upstream
+[COMMIT] Adapt for combine2
+[COMMIT] add release notes for .file_type attr
+[COMMIT] Merge branch 'master' into kerchunuk_combine2
+[COMMIT] Merge pull request #322 from cisaacstern/file-type
+[COMMIT] Simplify test
+[COMMIT] drop pynio w/ note, kerchunk to conda deps
+[COMMIT] move kerchunk from pip to conda for 3.9 env
+[COMMIT] Update netcdf_zarr_sequential.ipynb (#316)
+[COMMIT] Merge branch 'master' into kerchunuk_combine2
+[COMMIT] Add file type check
+[COMMIT] pin nbmake >= 1.3 release following upstream bugfix
+[COMMIT] Merge pull request #330 from cisaacstern/use-nbmake-1.3.0
+[COMMIT] Update pangeo_forge_recipes/recipes/reference_hdf_zarr.py
+[COMMIT] Pangeo Forge Cloud user guide (#328)
+[COMMIT] Merge pull request #327 from cisaacstern/drop-pynio
+[COMMIT] Merge branch 'master' into kerchunuk_combine2
+[COMMIT] kerchunk release
+[COMMIT] Merge pull request #326 from martindurant/kerchunuk_combine2
+[COMMIT] Slight tweaks to the main doc page (#332)
+[COMMIT] drop intro tutorial from advanced examples (#335)
+[COMMIT] pin sphinxext-opengraph>=0.6.3 (#334)
+[COMMIT] Add date to 0.8.3 release note
+[COMMIT] upgrade black
+[COMMIT] run upgraded black
+[COMMIT] Merge pull request #339 from pangeo-forge/upgrade-black
+[COMMIT] Merge remote-tracking branch 'origin/master' into HEAD
+[COMMIT] fix tutorials workflow base path
+[COMMIT] Merge pull request #340 from pangeo-forge/update-tutorials-workflow
+[COMMIT] Merge remote-tracking branch 'origin/master' into 0.8.3-release-notes
+[COMMIT] Merge pull request #338 from pangeo-forge/0.8.3-release-notes
+[PULL REQUEST] Intro tutorial part2
+[PULL REQUEST] Add docs for installing pangeo_forge_recipes
+[PULL REQUEST] Tutorial Part 1 Updates
+[PULL REQUEST] Add API reference page
+[PULL REQUEST] Homepage links
+[PULL REQUEST] Create intro tutorial part 3
+[PULL REQUEST] Add ogp headers
+[PULL REQUEST] Fix ogp base url
+[PULL REQUEST] Update about-pangeo-forge
+[PULL REQUEST] Add feedback from Paige
+[PULL REQUEST] add esa sss as example tutorial
+[PULL REQUEST] Fixing typo
+[PULL REQUEST] Remove Ocean Sciences duplicate tutorial
+[PULL REQUEST] Implement `FilePattern.file_type`
+[PULL REQUEST] Install and import from `kerchunk` (not fsspec-reference-maker)
+[PULL REQUEST] Kerchunuk combine2
+[PULL REQUEST] CI env: drop pynio, move kerchunk to conda deps
+[PULL REQUEST] Pangeo Forge Cloud user guide
+[PULL REQUEST] Pin nbmake >= 1.3 release following upstream bugfix
+[PULL REQUEST] Slight tweaks to the main doc page
+[PULL REQUEST] pin sphinxext-opengraph>=0.6.3
+[PULL REQUEST] Drop intro tutorial from advanced examples
+[PULL REQUEST] Add date to 0.8.3 release note
+[PULL REQUEST] Upgrade black
+[PULL REQUEST] Fix tutorials workflow base path
+    
+
+GENERATED RELEASE NOTES:
+- **Added**
+  - API reference page
+  - ESA SSS as an example tutorial
+  - Pangeo Forge Cloud user guide
+
+- **Changed**
+  - Updated and merged upstream code, including `kerchunk` integration
+  - Tutorial notebook fixes and updates
+  - Documentation improvements, including homepage links and ogp headers
+  - FilePattern file_type implementation with descriptive errors and deprecation warnings for is_opendap
+  - Pruning logic requiring args and attrs to match
+  - Updated netcdf_zarr_sequential.ipynb
+  - Changed `fsspec_reference_maker` to `kerchunk`
+  - Moved `kerchunk` from pip to conda dependencies
+  - Upgraded black formatter
+
+- **Fixed**
+  - Typo fixes
+  - OpenInputWithKerchunk keyword argument in tests
+  - Tutorials workflow base path issues
+
+- **Removed**
+  - Ocean Sciences duplicate tutorial
+  - Intro tutorial from advanced examples
+
+EVALUATION:
+
+COVERAGE:
+bleu4: 0.00
+rougeL: 0.00
+meteor: 0.00
+
+HALLUCINATION RATE:
+bleu4: 1.00
+rougeL: 1.00
+meteor: 0.95

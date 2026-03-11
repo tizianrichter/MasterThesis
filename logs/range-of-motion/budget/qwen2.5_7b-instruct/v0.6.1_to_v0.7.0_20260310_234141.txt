@@ -1,0 +1,143 @@
+Logging to: logs\range-of-motion\budget\qwen2.5_7b-instruct\v0.6.1_to_v0.7.0_20260310_234141.txt
+
+
+================================================================================
+Running pipeline for range-of-motion/budget v0.6.1 → v0.7.0
+================================================================================
+
+repo_owner                = range-of-motion
+repo_name                 = budget
+v_source                  = v0.6.1
+v_target                  = v0.7.0
+project_context           = 
+current_llm_model         = qwen2.5:7b-instruct
+OLLAMA_NUM_THREADS        = 8
+
+PROMPT:
+
+    You are an expert software technical writer.
+
+    TASK:
+    Generate high-quality release notes for a software release.
+
+    GOALS:
+    - Summarize user-relevant changes
+    - Abstract away low-level implementation details
+    - Avoid redundancy
+    - Use clear, concise language
+
+    TARGET AUDIENCE:
+    End users with technical background.
+
+    GROUNDING RULES (IMPORTANT):
+    - Use ONLY the information explicitly provided in the input data.
+    - Do NOT invent, assume, or infer changes that are not present.
+    - If no information supports a section, OMIT the section entirely.
+
+    OUTPUT FORMAT:
+    - Use Markdown
+    - Include ONLY these sections if relevant:
+      - Added
+      - Changed
+      - Fixed
+      - Removed
+      - Security
+    - Do NOT include introductions, conclusions, titles, or version numbers
+    - Output ONLY the release notes content
+
+    PROJECT CONTEXT:
+    
+
+    INPUT DATA:
+    The software version change is from **v0.6.1** to **v0.7.0**.
+    The following items describe changes between these two versions.
+    They may include commits, issues, and pull requests.
+    Do NOT list them verbatim.
+
+    NOTE:
+    - Commit messages and pull requests may refer to the same change. Treat duplicates as a single change.
+    - If a change was reverted within this release, do NOT list it unless the revert itself is user-relevant.
+
+    CHANGES:
+    [COMMIT] Bump lodash from 4.17.15 to 4.17.19
+[COMMIT] Fix plain-text mail templates
+[COMMIT] Merge pull request #212 from range-of-motion/208-fix-plaintext-mail-templates
+[COMMIT] Create settings page for spaces
+[COMMIT] Implement invites for spaces
+[COMMIT] Create page for spaces that shows invitees their invitation
+[COMMIT] Create InvitedToSpace mail
+[COMMIT] Test actions for space invites
+[COMMIT] Merge pull request #211 from range-of-motion/207-implement-invitations-for-spaces
+[COMMIT] Merge pull request #210 from range-of-motion/dependabot/npm_and_yarn/lodash-4.17.19
+[COMMIT] Add verification_token field to fillable property of User model to prevent it from not being persisted
+[COMMIT] Merge pull request #216 from range-of-motion/215-verification-token-doesnt-get-persisted
+[COMMIT] Stop storing entire space object and its relations in session, and instead just store the selected space's ID
+[COMMIT] Updates tests so they use space_id key for sessions instead of space
+[COMMIT] Merge pull request #214 from range-of-motion/125-stop-abusing-session-for-mass-storage
+[COMMIT] Copy Dusk job for Travis CI from laravel.com
+[COMMIT] Upgrade PHP to 7.3 in .travis.yml
+[COMMIT] Merge pull request #220 from range-of-motion/219-fix-laravel-dusk-in-travis-ci
+[COMMIT] Create BudgetUpdate command
+[COMMIT] Showcase BudgetUpdate command in README.md
+[COMMIT] Merge pull request #221 from range-of-motion/209-create-command-for-updating-application
+[COMMIT] Support creation of spaces
+[COMMIT] Test CreateSpaceAction
+[COMMIT] Merge pull request #222 from range-of-motion/207-implement-creation-of-spaces
+[COMMIT] Add last_verification_mail_sent_at column to users table and create action for sending verification mail
+[COMMIT] Support resending of verification mail
+[COMMIT] Test SendMailVerificationAction
+[COMMIT] Merge pull request #224 from range-of-motion/202-ability-to-resend-verification-mail
+[COMMIT] Add plan column to users table
+[COMMIT] Set and enforce maximum amount of spaces per plan
+[COMMIT] Test exceeding of maximum spaces for standard and premium plans
+[COMMIT] Add stripe_customer_id column to users table
+[COMMIT] Create billing section in settings
+[COMMIT] Support upgrading of user's plan through Stripe
+[COMMIT] Create SyncStripeSubscriptions job and schedule it to run every minute
+[COMMIT] Show monthly price of subscription and date of next payment on billing page
+[COMMIT] Create endpoint for canceling subscription
+[COMMIT] Merge pull request #223 from range-of-motion/implement-plans
+[PULL REQUEST] Bump lodash from 4.17.15 to 4.17.19
+[PULL REQUEST] Implement invitations for spaces
+[PULL REQUEST] Fix plain-text mail templates
+[PULL REQUEST] Stop storing entire space object and its relations in session
+[PULL REQUEST] Add verification_token field to fillable property of User model to pr…
+[PULL REQUEST] Fix Laravel Dusk in Travis CI
+[PULL REQUEST] Create command for updating application
+[PULL REQUEST] Implement creation of spaces
+[PULL REQUEST] Implement plans
+[PULL REQUEST] Ability to resend verification mail
+    
+
+GENERATED RELEASE NOTES:
+- **Added**
+  - Support for creating and managing spaces, including inviting users.
+  - A budget update command and associated tests.
+  - Plan management features, allowing users to upgrade their subscription through Stripe.
+  - A billing section in the settings page.
+  - An endpoint for canceling subscriptions.
+
+- **Changed**
+  - Updated lodash from version 4.17.15 to 4.17.19.
+  - Refactored session handling to store only the selected space's ID, improving performance and security.
+  - Enhanced mail templates for plain text emails.
+  - Adjusted tests to use `space_id` instead of `space`.
+
+- **Fixed**
+  - Ensured that the `verification_token` field is correctly persisted in the User model.
+  - Resolved issues with Laravel Dusk integration on Travis CI.
+
+- **Removed**
+  - No significant features or components were removed.
+
+EVALUATION:
+
+COVERAGE:
+bleu4: 0.06
+rougeL: 0.12
+meteor: 0.06
+
+HALLUCINATION RATE:
+bleu4: 0.88
+rougeL: 0.75
+meteor: 0.88

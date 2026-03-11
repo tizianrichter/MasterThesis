@@ -1,0 +1,17 @@
+project,subproject,model,coverage_bleu4,coverage_rougeL,coverage_meteor,halluc_bleu4,halluc_rougeL,halluc_meteor
+aflplusplus,aflplusplus,qwen2.5_7b-instruct,0.13,0.23,0.15,0.75,0.66,0.75
+asciidoctor,asciidoctorj,qwen2.5_7b-instruct,0.1,0.14,0.1,0.8,0.69,0.8
+datadog,chef-datadog,qwen2.5_7b-instruct,0.17,0.23,0.17,0.59,0.59,0.59
+easyrpg,liblcf,qwen2.5_7b-instruct,0.1,0.16,0.1,0.8,0.69,0.8
+gonum,gonum,qwen2.5_7b-instruct,0.1,0.12,0.1,0.95,0.9,0.95
+jupyterhub,repo2docker,qwen2.5_7b-instruct,0.26,0.29,0.26,0.66,0.53,0.57
+maticnetwork,matic.js,qwen2.5_7b-instruct,0.18,0.18,0.18,0.69,0.66,0.72
+microsoft,vscode-azure-iot-toolkit,qwen2.5_7b-instruct,0.7,0.79,0.8,0.0,0.0,0.0
+mortbopet,ripes,qwen2.5_7b-instruct,0.14,0.11,0.09,0.86,0.71,0.76
+oai,openapi-specification,qwen2.5_7b-instruct,0.22,0.45,0.22,0.77,0.63,0.67
+ollama,ollama,qwen2.5_7b-instruct,0.8,0.8,0.8,0.38,0.31,0.38
+open-telemetry,opentelemetry-java-instrumentation,qwen2.5_7b-instruct,0.2,0.13,0.04,0.8,0.4,0.96
+pangeo-forge,pangeo-forge-recipes,qwen2.5_7b-instruct,0.0,0.0,0.0,1.0,1.0,0.95
+psf,requests,qwen2.5_7b-instruct,0.86,0.97,0.95,0.15,0.0,0.15
+range-of-motion,budget,qwen2.5_7b-instruct,0.06,0.12,0.06,0.88,0.75,0.88
+rocmsoftwareplatform,rocthrust,qwen2.5_7b-instruct,0.0,0.0,0.0,1.0,0.95,1.0

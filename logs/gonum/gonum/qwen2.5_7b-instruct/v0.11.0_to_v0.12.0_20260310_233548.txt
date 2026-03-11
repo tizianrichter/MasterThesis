@@ -1,0 +1,129 @@
+Logging to: logs\gonum\gonum\qwen2.5_7b-instruct\v0.11.0_to_v0.12.0_20260310_233548.txt
+
+
+================================================================================
+Running pipeline for gonum/gonum v0.11.0 → v0.12.0
+================================================================================
+
+repo_owner                = gonum
+repo_name                 = gonum
+v_source                  = v0.11.0
+v_target                  = v0.12.0
+project_context           = 
+current_llm_model         = qwen2.5:7b-instruct
+OLLAMA_NUM_THREADS        = 8
+
+PROMPT:
+
+    You are an expert software technical writer.
+
+    TASK:
+    Generate high-quality release notes for a software release.
+
+    GOALS:
+    - Summarize user-relevant changes
+    - Abstract away low-level implementation details
+    - Avoid redundancy
+    - Use clear, concise language
+
+    TARGET AUDIENCE:
+    End users with technical background.
+
+    GROUNDING RULES (IMPORTANT):
+    - Use ONLY the information explicitly provided in the input data.
+    - Do NOT invent, assume, or infer changes that are not present.
+    - If no information supports a section, OMIT the section entirely.
+
+    OUTPUT FORMAT:
+    - Use Markdown
+    - Include ONLY these sections if relevant:
+      - Added
+      - Changed
+      - Fixed
+      - Removed
+      - Security
+    - Do NOT include introductions, conclusions, titles, or version numbers
+    - Output ONLY the release notes content
+
+    PROJECT CONTEXT:
+    
+
+    INPUT DATA:
+    The software version change is from **v0.11.0** to **v0.12.0**.
+    The following items describe changes between these two versions.
+    They may include commits, issues, and pull requests.
+    Do NOT list them verbatim.
+
+    NOTE:
+    - Commit messages and pull requests may refer to the same change. Treat duplicates as a single change.
+    - If a change was reverted within this release, do NOT list it unless the revert itself is user-relevant.
+
+    CHANGES:
+    [COMMIT] lapack/gonum: add Dlapmr
+[COMMIT] lapack/lapack64: add Lapmr
+[COMMIT] ci: install ragel to check rdf codegen
+[COMMIT] ci: replace golangci-lint with staticcheck
+[COMMIT] mat: add non-zero doers for TriBandDense
+[COMMIT] r2/spatial: add Box methods
+[COMMIT] spatial/r3: add Box
+[COMMIT] spatial/r2: add Triangle
+[COMMIT] spatial/r3: add Triangle
+[COMMIT] num/quat: add PowReal function
+[COMMIT] A+C: add Scott Kiesel
+[COMMIT] README: add note about differences in floating point behaviour
+[COMMIT] spatial/r3: add Divergence
+[COMMIT] r3.Mat: add Hessian
+[COMMIT] spatial/r3: deprecate Skew package level function in favor of method
+[COMMIT] ci,mod,graph/iterator: bump minimum version to go1.18
+[COMMIT] spatial/{r2,r3}: remove deprecated method functions
+[COMMIT] all: convert ' to ′ and '' to ′′
+[COMMIT] mathext/internal/amos: remove redundant linter directive
+[COMMIT] all: run gofmt and generate all packages
+[COMMIT] dsp/fourier/internal/fftpack: fix formatting
+[COMMIT] all: make tests pass when -count is greater than 1
+[COMMIT] lapack/testlapack: allow test loop to continue on failure
+[COMMIT] spatial/r3: add Gradient
+[COMMIT] fix bugs in Gradient and test
+[COMMIT] spatial/r3: add Jacobian
+[COMMIT] spatial/r3: add Jacobian layout description to doc comment
+    
+
+GENERATED RELEASE NOTES:
+- Added:
+  - `Dlapmr` and `Lapmr` functions in the LAPACK module
+  - `Box` methods in `r2/spatial` and `r3/spatial`
+  - `Triangle` in both `r2/spatial` and `r3/spatial`
+  - `PowReal` function in `quat/num`
+  - Scott Kiesel as a contributor
+  - `Divergence`, `Hessian`, `Gradient`, and `Jacobian` in `r3/spatial`
+
+- Changed:
+  - Replaced `golangci-lint` with `staticcheck` in CI
+  - Updated minimum Go version to 1.18 in CI, modules, and graph/iterator
+  - Converted single quotes to prime symbols (′ and ′′)
+  - Removed redundant linter directive in `amos/mathext/internal`
+  - Improved test loop resilience by allowing it to continue on failure
+  - Added Jacobian layout description to documentation comments
+
+- Fixed:
+  - Bugs in the `Gradient` function and its tests
+  - Formatting issues in `fftpack/dsp/fourier/internal`
+
+- Removed:
+  - Deprecated method functions from the `Skew` package level in `r3/spatial`
+  - Deprecated method functions in both `r2/spatial` and `r3/spatial`
+
+- Security:
+  (No relevant changes)
+
+EVALUATION:
+
+COVERAGE:
+bleu4: 0.10
+rougeL: 0.12
+meteor: 0.10
+
+HALLUCINATION RATE:
+bleu4: 0.95
+rougeL: 0.90
+meteor: 0.95
