@@ -13,3 +13,10 @@ repos:
     v_target: v2.32.0
     project_context: >
       HTTP library for Python, focused on simplicity and readability
+
+  - repo_owner: microsoft
+    repo_name: vscode-azure-iot-toolkit
+    v_source: v2.15.0
+    v_target: v2.16.6
+    project_context: >
+      Azure IoT Tools for VS Code is an extension pack for Visual Studio Code that lets you get all you need for Azure IoT development with 1-click installation. Microsoft Azure IoT support for Visual Studio Code is provided through a rich set of extensions that make it easy to discover and interact with Azure IoT Hub that power your IoT Edge and device applications

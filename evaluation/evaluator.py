@@ -5,6 +5,10 @@ import nltk.translate.meteor_score
 from nltk.translate.bleu_score import sentence_bleu, SmoothingFunction
 from nltk.translate.meteor_score import meteor_score
 from rouge_score import rouge_scorer
+import os
+import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
 
 
 class ReleaseEvaluator:
@@ -98,3 +102,68 @@ class ReleaseEvaluator:
 
         total = max(len(claims), 1)
         return {k: v / total for k, v in metrics.items()}
+
+
+def load_evaluations(logs_dir="logs", save_csv=False, csv_path="evaluation_summary.csv"):
+    """Load evaluation metrics from all txt files into a DataFrame."""
+    metric_pattern = re.compile(r"(bleu4|rougeL|meteor):\s*([\d.]+)")
+    results = []
+
+    for root, dirs, files in os.walk(logs_dir):
+        for file in files:
+            if file.endswith(".txt"):
+                file_path = os.path.join(root, file)
+                with open(file_path, "r", encoding="utf-8") as f:
+                    content = f.read()
+
+                coverage_match = re.search(r"COVERAGE:(.*?)HALLUCINATION RATE:", content, re.DOTALL)
+                coverage = {}
+                if coverage_match:
+                    for m in metric_pattern.findall(coverage_match.group(1)):
+                        coverage[m[0]] = float(m[1])
+
+                parts = root.split(os.sep)
+                project_name = parts[1] if len(parts) > 1 else ""
+                subproject_name = parts[2] if len(parts) > 2 else ""
+                model_name = parts[3] if len(parts) > 3 else ""
+
+                results.append({
+                    "project": project_name,
+                    "subproject": subproject_name,
+                    "model": model_name,
+                    "coverage_bleu4": coverage.get("bleu4"),
+                    "coverage_rougeL": coverage.get("rougeL"),
+                    "coverage_meteor": coverage.get("meteor"),
+                })
+
+    df = pd.DataFrame(results)
+
+    if save_csv:
+        df.to_csv(csv_path, index=False)
+        print(f"DataFrame saved as CSV at '{csv_path}'")
+
+    return df
+
+
+def plot_coverage_line(df):
+    """Plot coverage metrics as a line plot."""
+    projects = df['project']
+    metrics = ['coverage_bleu4', 'coverage_rougeL', 'coverage_meteor']
+
+    plt.figure(figsize=(14, 6))
+
+    for metric in metrics:
+        plt.plot(projects, df[metric], marker='o', label=metric.split('_')[1])
+
+    plt.xlabel("Repo")
+    plt.ylabel("Coverage Score")
+    plt.title("Coverage Metrics per Project")
+    plt.xticks(rotation=45, ha='right')
+    plt.legend()
+    plt.tight_layout()
+    plt.show()
+
+
+if __name__ == "__main__":
+    df = load_evaluations("logs", save_csv=False, csv_path="evaluation.csv")
+    plot_coverage_line(df)

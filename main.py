@@ -4,12 +4,12 @@ from context.retriever import Retriever
 from llm.local_llm import LocalLLM
 from generation.release_notes import ReleaseNoteGenerator
 from postprocess.formatter import Formatter
-import argparse
 import os
 from dotenv import load_dotenv
 from evaluation.evaluator import ReleaseEvaluator
 from utils.logging import redirect_output_per_run
 import utils.helper as helper
+
 
 def run_pipeline(
         repo_owner,
@@ -18,6 +18,7 @@ def run_pipeline(
         v_target,
         project_context,
         current_llm_model,
+        release_notes,
         prompt_only=False,
 ):
     # Logging
@@ -28,7 +29,6 @@ def run_pipeline(
         v_source=v_source,
         v_target=v_target,
     )
-    ollama_num_threads = os.getenv("OLLAMA_NUM_THREADS")
     print(f"Logging to: {log_path}\n")
     print("\n" + "=" * 80)
     print(
@@ -83,15 +83,15 @@ def run_pipeline(
     if prompt_only:
         return
 
-    release_notes = generator.generate(prompt, temperature=0.1, top_p=0.9)
-    final_output = formatter.format(release_notes)
+    generated_release_notes = generator.generate(prompt, temperature=0.1, top_p=0.9)
+    final_output = formatter.format(generated_release_notes)
 
-    print("\nRELEASE NOTES:\n" + final_output)
+    print("\nGENERATED RELEASE NOTES:\n" + final_output)
 
     # Evaluation
     claims = evaluator.extract_claims(final_output)
-    coverage = evaluator.coverage(ground_truth_changes, claims)
-    hallucination = evaluator.hallucination_rate(ground_truth_changes, claims)
+    coverage = evaluator.coverage(release_notes, claims)
+    hallucination = evaluator.hallucination_rate(release_notes, claims)
 
     print("\nEVALUATION:")
     print("\nCOVERAGE:")
@@ -109,16 +109,35 @@ def main():
     all_llm_models = ["smollm2:135m", "llama2:7b", "qwen2.5:7b-instruct"]
     current_llm_model = all_llm_models[2]
 
-    repos = helper.load_runs()
-    for repo in repos:
+    # repos = helper.load_repos_yaml()
+    # for repo in repos:
+    #   run_pipeline(
+    #      repo_owner=repo["repo_owner"],
+    #      repo_name=repo["repo_name"],
+    #      v_source=repo["v_source"],
+    #      v_target=repo["v_target"],
+    #      project_context=repo["project_context"],
+    #      current_llm_model=current_llm_model,
+    #      prompt_only=args.prompt_only
+    #  )
+
+    releases = helper.load_releases_jsonl("dataset.jsonl.zst")
+
+    repo_owner = "jupyterhub"
+
+    for release in releases:
+        if repo_owner == release["repo_owner"]:
+            continue
+        repo_owner = release["repo_owner"]
         run_pipeline(
-            repo_owner=repo["repo_owner"],
-            repo_name=repo["repo_name"],
-            v_source=repo["v_source"],
-            v_target=repo["v_target"],
-            project_context=repo["project_context"],
+            repo_owner=release["repo_owner"],
+            repo_name=release["repo_name"],
+            v_source=release["v_source"],
+            v_target=release["v_target"],
+            project_context=release["project_context"],
             current_llm_model=current_llm_model,
-            prompt_only=args.prompt_only,
+            release_notes=release["release_notes"],
+            prompt_only=args.prompt_only
         )
 
 
