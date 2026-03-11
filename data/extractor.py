@@ -152,3 +152,125 @@ class DataExtractor:
             diff_text = diff_text[:max_chars] + "\n\n[DIFF TRUNCATED]"
 
         return diff_text
+
+    def get_repo_metadata(
+            self,
+            owner: str,
+            repo: str,
+            token: Optional[str] = None
+    ) -> Optional[Dict]:
+        """
+        Fetch repository metadata (stars, forks, archived status, etc.)
+        """
+        url = f"https://api.github.com/repos/{owner}/{repo}"
+        headers = {"Accept": "application/vnd.github+json"}
+        if token:
+            headers["Authorization"] = f"Bearer {token}"
+
+        response = requests.get(url, headers=headers)
+        if response.status_code != 200:
+            return None
+
+        return response.json()
+
+    def get_contributors_count(
+            self,
+            owner: str,
+            repo: str,
+            token: Optional[str] = None
+    ) -> int:
+        """
+        Get approximate number of contributors.
+        """
+        url = f"https://api.github.com/repos/{owner}/{repo}/contributors?per_page=1&anon=true"
+        headers = {"Accept": "application/vnd.github+json"}
+        if token:
+            headers["Authorization"] = f"Bearer {token}"
+
+        response = requests.get(url, headers=headers)
+
+        if response.status_code != 200:
+            return 0
+
+        # Use pagination header trick to estimate total
+        if "Link" in response.headers:
+            link = response.headers["Link"]
+            if 'rel="last"' in link:
+                last_page = int(link.split("page=")[-1].split(">")[0])
+                return last_page
+
+        return len(response.json())
+
+    def get_tags(
+            self,
+            owner: str,
+            repo: str,
+            token: Optional[str] = None
+    ) -> List[str]:
+        """
+        Fetch repository tags (max 100).
+        """
+        url = f"https://api.github.com/repos/{owner}/{repo}/tags?per_page=100"
+        headers = {"Accept": "application/vnd.github+json"}
+        if token:
+            headers["Authorization"] = f"Bearer {token}"
+
+        response = requests.get(url, headers=headers)
+        if response.status_code != 200:
+            return []
+
+        return [tag["name"] for tag in response.json()]
+
+    def get_release_notes(
+            self,
+            owner: str,
+            repo: str,
+            tag: str,
+            token: Optional[str] = None,
+            min_length: int = 30
+    ) -> Optional[str]:
+        """
+        Fetch GitHub release notes for a specific tag.
+        Filters out empty or trivial releases.
+        """
+        url = f"https://api.github.com/repos/{owner}/{repo}/releases/tags/{tag}"
+        headers = {"Accept": "application/vnd.github+json"}
+        if token:
+            headers["Authorization"] = f"Bearer {token}"
+
+        response = requests.get(url, headers=headers)
+
+        if response.status_code != 200:
+            return None
+
+        body = response.json().get("body")
+
+        if not body or len(body.strip()) < min_length:
+            return None
+
+        return body.strip()
+
+    def get_commit_hashes_between(
+            self,
+            owner: str,
+            repo: str,
+            base: str,
+            head: str,
+            token: Optional[str] = None
+    ) -> Set[str]:
+        """
+        Get commit SHAs between two refs.
+        Useful for mapping to CommitChronicle commits.
+        """
+        url = f"https://api.github.com/repos/{owner}/{repo}/compare/{base}...{head}"
+        headers = {"Accept": "application/vnd.github+json"}
+        if token:
+            headers["Authorization"] = f"Bearer {token}"
+
+        response = requests.get(url, headers=headers)
+
+        if response.status_code != 200:
+            return set()
+
+        data = response.json()
+        return {commit["sha"] for commit in data.get("commits", [])}

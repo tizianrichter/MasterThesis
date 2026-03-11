@@ -1,0 +1,34 @@
+Filter Criteria:
+- License: MIT / Apache / BSD-3 (from CommitChronicle)
+- Stars: ≥ 50
+- Contributors: ≥ 10
+- Archived: must be False
+- Number of releases (tags): ≥ 3
+- Commits per release: ≥ 20
+- Release notes length: ≥ 30 characters
+- Commits mapped by SHA between tags
+- Commits sorted chronologically
+
+JSON Fields (per release):
+{
+  "repo": "owner/repo_name",
+  "release_tag": "v2.1.0",
+  "base_tag": "v2.0.0",
+  "num_commits": 42,
+  "commits": [
+    {
+      "message": "Commit message",
+      "diff": [
+        {
+          "change_type": "MODIFY",
+          "old_path": "file1.py",
+          "new_path": "file1.py",
+          "diff": "@@ -1,3 +1,3 @@..."
+        },
+        ...
+      ]
+    },
+    ...
+  ],
+  "release_notes": "Maintainer-written release notes text."
+}
