@@ -4,6 +4,7 @@ import os
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import seaborn as sns
 
 from nltk.translate.bleu_score import corpus_bleu, SmoothingFunction
 from nltk.translate.meteor_score import meteor_score
@@ -265,12 +266,11 @@ def extract_sections(text):
     )
 
 
-def load_evaluations(logs_dir="logs", save_csv=False, csv_path="evaluation_one_shot.csv"):
+def load_evaluations(logs_dir="two-shot/logs", save_csv=False, csv_path="evaluation.csv"):
     """
     Load evaluation data from log files and compute metrics.
     """
-    #TODO: GPT API KEY, work key?
-    llm = CloudLLM(model_name="gpt-4o-mini", api_key="")
+    llm = CloudLLM(model_name="gemini-3-flash-preview", api_key=os.getenv("GEMINI_API_KEY"))
     evaluator = ReleaseEvaluator(llm=llm)
     results = []
 
@@ -297,8 +297,8 @@ def load_evaluations(logs_dir="logs", save_csv=False, csv_path="evaluation_one_s
 
             parts = root.split(os.sep)
 
-            quality = evaluator.evaluate_quality(gen_text)
-            content_eval = evaluator.evaluate_content(gen_text, human_text)
+            #quality = evaluator.evaluate_quality(gen_text)
+            #content_eval = evaluator.evaluate_content(gen_text, human_text)
 
             results.append({
                 "project": parts[1] if len(parts) > 1 else "",
@@ -312,12 +312,12 @@ def load_evaluations(logs_dir="logs", save_csv=False, csv_path="evaluation_one_s
                 "corpus_rougeL": corpus["rougeL"],
                 "corpus_meteor": corpus["meteor"],
 
-                "clarity": quality.get("clarity", {}).get("score"),
-                "conciseness": quality.get("conciseness", {}).get("score"),
-                "organization": quality.get("organization", {}).get("score"),
+                #"clarity": quality.get("clarity", {}).get("score"),
+                #"conciseness": quality.get("conciseness", {}).get("score"),
+                #"organization": quality.get("organization", {}).get("score"),
 
-                "coverage": content_eval.get("coverage", {}).get("score"),
-                "hallucination": content_eval.get("hallucination", {}).get("score"),
+                #"coverage": content_eval.get("coverage", {}).get("score"),
+                #"hallucination": content_eval.get("hallucination", {}).get("score"),
             })
             break
 
@@ -337,7 +337,7 @@ def aggregate_results(df, group_by=("project",)):
     return df.groupby(list(group_by)).mean(numeric_only=True).reset_index()
 
 
-def plot_metrics(df, group_by=("project",)):
+def plot_metrics(df, group_by=("project",), title="Average Similarity Metrics"):
     """
     Plot average BLEU, ROUGE-L, and METEOR scores.
     """
@@ -354,14 +354,47 @@ def plot_metrics(df, group_by=("project",)):
         plt.plot(x, df[m], marker='o', label=m)
 
     plt.xticks(rotation=45, ha='right')
-    plt.title("Average Similarity Metrics")
+    plt.title(title)
     plt.legend()
+    plt.tight_layout()
+    plt.show()
+
+def plot_multiple_metrics(file_dict, group_by="project"):
+    metrics = ["avg_bleu4", "avg_rougeL", "avg_meteor"]
+    df_list = []
+
+    for label, file_path in file_dict.items():
+        df = pd.read_csv(file_path)
+        df["shot_type"] = label
+        df_list.append(df)
+
+    df_all = pd.concat(df_list)
+    sns.set_theme(style="whitegrid")
+
+    fig, axes = plt.subplots(1, len(metrics), figsize=(18, 5), sharex=True)
+    for idx, metric in enumerate(metrics):
+        ax = axes[idx]
+        sns.barplot(data=df_all, x=group_by, y=metric, hue="shot_type", ax=ax)
+        ax.set_title(metric)
+        ax.set_xticklabels(ax.get_xticklabels(), rotation=45, ha='right')
+        ax.set_ylabel("Score")
+        ax.set_xlabel("Project")
+        ax.legend(title="Shot Type")
+
+    plt.suptitle("LLM vs Human Release Notes Similarity")
     plt.tight_layout()
     plt.show()
 
 
 if __name__ == "__main__":
-    df = load_evaluations("logs", save_csv=True)
+#    df = load_evaluations("logs", save_csv=True)
 
-    df_grouped = aggregate_results(df, group_by=("project",))
-    plot_metrics(df_grouped)
+#    df_grouped = aggregate_results(df, group_by=("project",))
+#    plot_metrics(df_grouped)
+
+    files = {
+        "zero-shot": "evaluation_zero-shot_29_03_2026.csv",
+        "one-shot": "evaluation_two-shot_06_04_2026.csv",
+        "two-shot": "evaluation_one-shot_29_03_2026.csv"
+    }
+    plot_multiple_metrics(files)

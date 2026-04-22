@@ -77,9 +77,10 @@ def load_releases_jsonl(path: str):
                     "repo_name": name,
                     "v_source": item["base_tag"],
                     "v_target": item["release_tag"],
-                    "project_context": "",
+                    "project_context": item["project_context"],
                     "commits": item["commits"],
-                    "release_notes": item["release_notes"]
+                    "release_notes": item["release_notes"],
+                    "related_items": item["related_items"]
                 })
 
     return releases

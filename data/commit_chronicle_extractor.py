@@ -33,7 +33,7 @@ class CommitChronicleExtractor:
     def _group_commits_by_repo(self) -> Dict[str, List[Dict]]:
         repos = defaultdict(list)
         for row in self.dataset:
-            if len(repos) >= 100:
+            if len(repos) >= 10:
                 break
             repos[row["repo"]].append(row)
 
@@ -46,7 +46,8 @@ class CommitChronicleExtractor:
         commits: List[Dict],
         tags: List[str],
         token: Optional[str],
-        min_commits_per_release: int
+        min_commits_per_release: int,
+        project_context: str
     ) -> List[Dict]:
 
         owner, repo_name = repo.split("/")
@@ -87,8 +88,12 @@ class CommitChronicleExtractor:
             if not release_notes:
                 continue
 
+            formatted_messages = [f"[COMMIT] {c['message']}" for c in window_commits]
+            related_items = self.api.get_issues(owner, repo_name, formatted_messages, token)
+
             releases.append({
                 "repo": repo,
+                "project_context": project_context,
                 "release_tag": head,
                 "base_tag": base,
                 "num_commits": len(window_commits),
@@ -99,6 +104,7 @@ class CommitChronicleExtractor:
                     }
                     for c in window_commits
                 ],
+                "related_items": related_items,
                 "release_notes": release_notes
             })
 
@@ -133,6 +139,10 @@ class CommitChronicleExtractor:
             if metadata.get("stargazers_count", 0) < min_stars:
                 continue
 
+            description = metadata.get("description") or ""
+            topics = ", ".join(metadata.get("topics", []))
+            project_context = f"{description} (Keywords: {topics})".strip()
+
             contributors = self.api.get_contributors_count(
                 owner, repo_name, token
             )
@@ -152,7 +162,8 @@ class CommitChronicleExtractor:
                 commits,
                 tags,
                 token,
-                min_commits_per_release
+                min_commits_per_release,
+                project_context
             )
 
             if len(releases) < min_releases:

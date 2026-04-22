@@ -6,18 +6,20 @@ from utils.tee_logger import Tee
 
 
 def redirect_output_per_run(
-    repo_owner: str,
-    repo_name: str,
-    model_name: str,
-    v_source: str,
-    v_target: str,
-    base_dir: str = "logs"
+        llm_mode: str,
+        repo_owner: str,
+        repo_name: str,
+        model_name: str,
+        v_source: str,
+        v_target: str,
+        base_dir: str = "logs"
 ):
     safe_model = model_name.replace(":", "_").replace("/", "_")
     safe_range = f"{v_source}_to_{v_target}"
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
 
     log_dir = os.path.join(
+        llm_mode,
         base_dir,
         repo_owner,
         repo_name,

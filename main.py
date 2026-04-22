@@ -70,7 +70,6 @@ def run_pipeline(
     issues = extractor.get_issues(repo_owner, repo_name, commits, token=token)
     commits.extend(issues)
 
-    ground_truth_changes = commits + issues
     artifacts = "\n".join(commits)
 
     cleaned = preprocessor.process(artifacts)

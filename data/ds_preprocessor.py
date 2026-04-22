@@ -1,11 +1,12 @@
 import re
 from collections import defaultdict
+from data.semantic_grouper import SemanticGrouper
 
 class Preprocessor:
     def __init__(self):
-        self.merge_commit = re.compile(r"^merge\b", re.IGNORECASE)
+        self.merge_commit = re.compile(r"^merge", re.IGNORECASE)
         self.version_bump = re.compile(r"bump\s+version|release\s+v?\d", re.IGNORECASE)
-        self.ci_only = re.compile(r"\b(ci|build|chore|deps)\b", re.IGNORECASE)
+        self.ci_only = re.compile(r"(ci|build|chore|deps)", re.IGNORECASE)
 
         self.ignore_paths = [
             "test",
@@ -15,10 +16,10 @@ class Preprocessor:
         ]
 
         self.category_patterns = {
-            "Added": [r"^add\b", r"^implement\b", r"^enable\b", r"^support\b", r"^initial commit\b"],
-            "Fixed": [r"^fix\b", r"^bugfix\b", r"^correct\b", r"^resolve\b"],
-            "Changed": [r"^update\b", r"^improve\b", r"^refactor\b", r"^rewrite\b", r"^modify\b", r"^rename\b", r"^change\b"],
-            "Removed": [r"^remove\b", r"^delete\b"],
+            "Added": [r"^add", r"^implement", r"^enable", r"^support", r"^initial commit"],
+            "Fixed": [r"^fix", r"^bugfix", r"^correct", r"^resolve"],
+            "Changed": [r"^update", r"^improve", r"^refactor", r"^rewrite", r"^modify", r"^rename", r"^change"],
+            "Removed": [r"^remove", r"^delete"],
             "Security": [r"security", r"vulnerability", r"cve"],
         }
 
@@ -47,7 +48,10 @@ class Preprocessor:
                 cleaned.append(message)
 
         cleaned = self._deduplicate(cleaned)
-        grouped = self._categorize(cleaned)
+        grouper = SemanticGrouper()
+        clusters = grouper.group(cleaned)
+        summarized = ["; ".join(cluster) for cluster in clusters]
+        grouped = self._categorize(summarized)
         return self._format_grouped(grouped)
 
     def _categorize(self, messages: list[str]) -> dict[str, list[str]]:
@@ -91,19 +95,19 @@ class Preprocessor:
 
     def _normalize_tense(self, text: str) -> str:
         replacements = {
-            r"^add\b": "Added",
-            r"^fix\b": "Fixed",
-            r"^remove\b": "Removed",
-            r"^update\b": "Updated",
-            r"^improve\b": "Improved",
-            r"^refactor\b": "Refactored",
-            r"^rewrite\b": "Rewrote",
-            r"^modify\b": "Modified",
-            r"^rename\b": "Renamed",
-            r"^implement\b": "Implemented",
-            r"^enable\b": "Enabled",
-            r"^support\b": "Added support for",
-            r"^initial commit\b": "Initial commit",
+            r"^add": "Added",
+            r"^fix": "Fixed",
+            r"^remove": "Removed",
+            r"^update": "Updated",
+            r"^improve": "Improved",
+            r"^refactor": "Refactored",
+            r"^rewrite": "Rewrote",
+            r"^modify": "Modified",
+            r"^rename": "Renamed",
+            r"^implement": "Implemented",
+            r"^enable": "Enabled",
+            r"^support": "Added support for",
+            r"^initial commit": "Initial commit",
         }
         for pattern, replacement in replacements.items():
             text = re.sub(pattern, replacement, text, flags=re.IGNORECASE)
