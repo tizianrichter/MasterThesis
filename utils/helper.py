@@ -1,5 +1,6 @@
 import argparse
 import io
+from enum import Enum
 
 import yaml
 import json
@@ -84,3 +85,9 @@ def load_releases_jsonl(path: str):
                 })
 
     return releases
+
+class LLMModes(Enum):
+    LLM_MODE_ZERO_SHOT = "zero-shot"
+    LLM_MODE_ONE_SHOT = "one-shot"
+    LLM_MODE_TWO_SHOT = "two-shot"
+    LLM_MODE_RAG = "rag"
