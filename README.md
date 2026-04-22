@@ -29,3 +29,11 @@ Output sections are generated based on the input data and can include categories
 **Fixed**
 - Memory leak in the authentication module.
 - Issue preventing users from resetting passwords.
+
+## Setup
+```
+pip install -r requirements.txt
+```
+```
+python ds_main.py
+```
