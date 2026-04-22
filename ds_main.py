@@ -116,77 +116,79 @@ def run_pipeline(
 def main():
     args = helper.parse_args()
 
-    all_llm_models = ["smollm2:135m", "llama2:7b", "qwen2.5:7b-instruct"]
-    current_llm_model = all_llm_models[2]
+    all_llm_models = ["llama3.2:3b", "qwen2.5:7b-instruct", "llama3.1:8b", "mistral-small3.2:24b", "qwen3.5:35b", "llama3.3:70b"]
+    #current_llm_model = all_llm_models[2]
 
-    releases = helper.load_releases_jsonl("dataset.jsonl.zst")
+    for current_llm_model in all_llm_models:
 
-    # Group releases by repo_owner
-    repos = defaultdict(list)
-    for r in releases:
-        repos[r["repo_owner"]].append(r)
+        releases = helper.load_releases_jsonl("dataset.jsonl.zst")
 
-    for repo_owner, repo_releases in repos.items():
+        # Group releases by repo_owner
+        repos = defaultdict(list)
+        for r in releases:
+            repos[r["repo_owner"]].append(r)
 
-        # Need at least 3 releases for in-context prompting
-        if len(repo_releases) < 3:
-            continue
+        for repo_owner, repo_releases in repos.items():
 
-        # Sort releases
-        repo_releases = sorted(repo_releases, key=lambda x: x["v_source"])
+            # Need at least 3 releases for in-context prompting
+            if len(repo_releases) < 3:
+                continue
 
-        # Pick:
-        example_release1 = repo_releases[0]
-        example_release2 = repo_releases[1]
+            # Sort releases
+            repo_releases = sorted(repo_releases, key=lambda x: x["v_source"])
 
-        retriever = Retriever()
-        retriever.add_to_index(example_release1["commits"], example_release1["release_notes"],
-                               example_release1["v_source"], example_release1["v_target"],
-                               example_release1["related_items"])
-        retriever.add_to_index(example_release2["commits"], example_release2["release_notes"],
-                               example_release2["v_source"], example_release2["v_target"],
-                               example_release2["related_items"])
+            # Pick:
+            example_release1 = repo_releases[0]
+            example_release2 = repo_releases[1]
 
-        for i in range(2, len(repo_releases)):
-            target_release = repo_releases[i]
+            retriever = Retriever()
+            retriever.add_to_index(example_release1["commits"], example_release1["release_notes"],
+                                   example_release1["v_source"], example_release1["v_target"],
+                                   example_release1["related_items"])
+            retriever.add_to_index(example_release2["commits"], example_release2["release_notes"],
+                                   example_release2["v_source"], example_release2["v_target"],
+                                   example_release2["related_items"])
 
-            print(f"\n---> Processing Release {i - 1}/{(len(repo_releases) - 2)} "
-                  f"for {repo_owner}/{target_release['repo_name']}")
+            for i in range(2, len(repo_releases)):
+                target_release = repo_releases[i]
 
-            rag_context = retriever.query(target_release["commits"])
+                print(f"\n---> Processing Release {i - 1}/{(len(repo_releases) - 2)} "
+                      f"for {repo_owner}/{target_release['repo_name']}")
 
-            run_pipeline(
-                llm_mode="rag",
+                rag_context = retriever.query(target_release["commits"])
 
-                repo_owner=target_release["repo_owner"],
-                repo_name=target_release["repo_name"],
-                v_source=target_release["v_source"],
-                v_target=target_release["v_target"],
-                commits=target_release["commits"],
-                related_items=target_release["related_items"],
-                project_context=target_release["project_context"],
-                release_notes=target_release["release_notes"],
+                run_pipeline(
+                    llm_mode="rag",
 
-                ex_v_source1=example_release1["v_source"],
-                ex_v_target1=example_release1["v_target"],
-                ex_commits1=example_release1["commits"],
-                ex_release_notes1=example_release1["release_notes"],
-                ex_related_items1=example_release1["related_items"],
+                    repo_owner=target_release["repo_owner"],
+                    repo_name=target_release["repo_name"],
+                    v_source=target_release["v_source"],
+                    v_target=target_release["v_target"],
+                    commits=target_release["commits"],
+                    related_items=target_release["related_items"],
+                    project_context=target_release["project_context"],
+                    release_notes=target_release["release_notes"],
 
-                ex_v_source2=example_release2["v_source"],
-                ex_v_target2=example_release2["v_target"],
-                ex_commits2=example_release2["commits"],
-                ex_release_notes2=example_release2["release_notes"],
-                ex_related_items2=example_release2["related_items"],
+                    ex_v_source1=example_release1["v_source"],
+                    ex_v_target1=example_release1["v_target"],
+                    ex_commits1=example_release1["commits"],
+                    ex_release_notes1=example_release1["release_notes"],
+                    ex_related_items1=example_release1["related_items"],
 
-                current_llm_model=current_llm_model,
-                rag_context=rag_context,
+                    ex_v_source2=example_release2["v_source"],
+                    ex_v_target2=example_release2["v_target"],
+                    ex_commits2=example_release2["commits"],
+                    ex_release_notes2=example_release2["release_notes"],
+                    ex_related_items2=example_release2["related_items"],
 
-                prompt_only=args.prompt_only
-            )
-            retriever.add_to_index(target_release["commits"], target_release["release_notes"],
-                                   target_release["v_source"], target_release["v_target"],
-                                   target_release["related_items"])
+                    current_llm_model=current_llm_model,
+                    rag_context=rag_context,
+
+                    prompt_only=args.prompt_only
+                )
+                retriever.add_to_index(target_release["commits"], target_release["release_notes"],
+                                       target_release["v_source"], target_release["v_target"],
+                                       target_release["related_items"])
 
 
 if __name__ == "__main__":
