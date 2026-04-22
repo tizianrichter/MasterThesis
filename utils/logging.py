@@ -2,11 +2,13 @@
 import os
 import sys
 from datetime import datetime
+
+from utils import helper
 from utils.tee_logger import Tee
 
 
 def redirect_output_per_run(
-        llm_mode: str,
+        llm_mode: helper.LLMModes,
         repo_owner: str,
         repo_name: str,
         model_name: str,
@@ -19,7 +21,7 @@ def redirect_output_per_run(
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
 
     log_dir = os.path.join(
-        llm_mode,
+        llm_mode.name,
         base_dir,
         repo_owner,
         repo_name,
