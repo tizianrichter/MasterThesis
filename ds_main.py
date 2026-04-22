@@ -1,5 +1,7 @@
 from collections import defaultdict
 
+import ollama
+
 from data.extractor import DataExtractor
 from data.ds_preprocessor import Preprocessor
 from context.retriever import Retriever
@@ -127,6 +129,12 @@ def main():
     args = helper.parse_args()
 
     all_llm_models = ["llama3.2:3b", "qwen2.5:7b-instruct", "llama3.1:8b", "mistral-small3.2:24b", "qwen3.5:35b", "llama3.3:70b"]
+    for llm_model in all_llm_models:
+        try:
+            ollama.show(llm_model)
+        except ollama.ResponseError:
+            print(f"Model {llm_model} not found. Pulling it now...")
+            ollama.pull(llm_model)
     #current_llm_model = all_llm_models[2]
 
     for llm_mode in helper.LLMModes:
